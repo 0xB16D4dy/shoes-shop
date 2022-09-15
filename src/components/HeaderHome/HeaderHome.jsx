@@ -20,30 +20,29 @@ export default function HeaderHome() {
             aria-label='Toggle navigation'
           />
           <div className='collapse navbar-collapse' id='collapsibleNavId'>
-            <form className='frm-search d-flex my-2 my-lg-0 ms-auto'>
-              <i class='icon-search fa fa-search text-light'></i>
-              <NavLink
-                className={'text-light text-decoration-none'}
-                to={'/search'}
-              >
-                Search
-              </NavLink>
-            </form>
-            <ul className='navbar-nav mt-2 mt-lg-0'>
+            <ul className='navbar-nav mt-2 mt-lg-0 ms-auto'>
               <li className='nav-item active'>
-                <NavLink className='nav-link' to='/'>
-                  <div className='cart-product'>
+                <NavLink className='nav-link' to='/search'>
+                  <div className='nav-search'>
+                    <i class='icon-search fa fa-search text-light'></i>
+                    Search
+                  </div>
+                </NavLink>
+              </li>
+              <li className='nav-item active'>
+                <NavLink className='nav-link' to='/cart'>
+                  <div className='cart-product text-white'>
                     <i class='fa-solid fa-cart-shopping'></i>(1)
                   </div>
                 </NavLink>
               </li>
               <li className='nav-item active'>
-                <NavLink className='nav-link' to='/'>
+                <NavLink className='nav-link' to='/login'>
                   Login
                 </NavLink>
               </li>
               <li className='nav-item active'>
-                <NavLink className='nav-link' to='/'>
+                <NavLink className='nav-link' to='/register'>
                   Register
                 </NavLink>
               </li>

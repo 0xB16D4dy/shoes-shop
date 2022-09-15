@@ -3,17 +3,6 @@ header.wrapper {
     .collapse {
       .frm-search {
         position: relative;
-        .icon-search {
-          position: absolute;
-          left: -30px;
-          bottom: 2px;
-          font-size: 26px;
-        }
-        a {
-          font-size: 27px;
-          font-weight: 300;
-          line-height: 1;
-        }
       }
       .navbar-nav {
         .nav-item {
@@ -23,6 +12,16 @@ header.wrapper {
               line-height: 1;
               margin-left: 8px;
               margin-right: 4px;
+            }
+          }
+          .nav-search {
+            font-weight: 300;
+            font-size: 30px;
+            line-height: 0.8;
+            color: #fff;
+            .icon-search {
+              font-size: 26px;
+              padding-right: 5px;
             }
           }
         }
@@ -35,7 +34,7 @@ header.wrapper {
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      margin-top: 16px;
+      margin: 16px 0 25px;
       padding-left: 0px;
       .nav-item {
         padding-right: 24px;

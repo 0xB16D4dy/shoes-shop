@@ -1,0 +1,68 @@
+section {
+  .wrapper-login {
+    .header-login {
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 48px;
+    }
+    hr {
+    }
+    .row {
+      margin-bottom: 16px;
+      .frm {
+        .form-group {
+          margin-bottom: 10px;
+          label {
+            padding: 5px 0;
+          }
+          .form-control {
+            padding: 16px 12px 14px 14px;
+            background: rgba(33, 33, 33, 0.08);
+            border-radius: 4px 4px 4px 4px;
+            -webkit-border-radius: 4px 4px 4px 4px;
+            -moz-border-radius: 4px 4px 4px 4px;
+            -ms-border-radius: 4px 4px 4px 4px;
+            -o-border-radius: 4px 4px 4px 4px;
+          }
+          span {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            color: #f50e0e;
+            padding-bottom: 10px;
+          }
+          a.register-link {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 24px;
+          }
+          button.btnLogin {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 12px 52px;
+            background: #6200ee;
+            box-shadow: 0px 4px 5px rgb(0 0 0 / 14%),
+              0px 1px 10px rgb(0 0 0 / 12%), 0px 2px 4px rgb(0 0 0 / 20%);
+            border-radius: 50px;
+            border: none;
+            font-weight: 500;
+            font-size: 17px;
+            line-height: 16px;
+            color: #fff;
+          }
+          .login-facebook {
+            background: #1877f2;
+            width: 100%;
+            margin-top: 14px;
+            box-shadow: 0px 38.4869px 71.4756px rgba(0, 0, 0, 0.07);
+            border-radius: 20.9968px;
+            padding: 17.4953px;
+            border: none;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
