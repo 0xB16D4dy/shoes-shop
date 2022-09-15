@@ -1,29 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import '../../assets/scss/components/HeaderHome/HeaderHome.scss';
 
 export default function HeaderHome() {
-  const { userLogin } = useSelector((state) => state.userReducer);
-  const renderLoginNavItem = () => {
-    if (userLogin == null) {
-      return (
-        <NavLink className='nav-link' to='/login'>
-          Login (Authorization - token)
-        </NavLink>
-      );
-    }
-    return (
-      <NavLink className='nav-link' to='/profile'>
-        Hello {userLogin.name} !
-      </NavLink>
-    );
-  };
   return (
-    <div>
-      <nav className='navbar navbar-expand-sm navbar-dark bg-dark'>
+    <header className='wrapper'>
+      <nav className='navbar navbar-expand-sm navbar-dark bg-black'>
         <div className='container'>
           <NavLink className='navbar-brand' to='/'>
-            Project Hook
+            <img src='./img/iconBrand.png' alt='iconBrand' />
           </NavLink>
           <button
             className='navbar-toggler d-lg-none'
@@ -35,85 +20,58 @@ export default function HeaderHome() {
             aria-label='Toggle navigation'
           />
           <div className='collapse navbar-collapse' id='collapsibleNavId'>
-            <ul className='navbar-nav me-auto mt-2 mt-lg-0'>
+            <form className='frm-search d-flex my-2 my-lg-0 ms-auto'>
+              <i class='icon-search fa fa-search text-light'></i>
+              <NavLink
+                className={'text-light text-decoration-none'}
+                to={'/search'}
+              >
+                Search
+              </NavLink>
+            </form>
+            <ul className='navbar-nav mt-2 mt-lg-0'>
               <li className='nav-item active'>
                 <NavLink className='nav-link' to='/'>
-                  Home
+                  <div className='cart-product'>
+                    <i class='fa-solid fa-cart-shopping'></i>(1)
+                  </div>
                 </NavLink>
               </li>
-              <li className='nav-item'>
-                <NavLink className='nav-link' to='/logindemo'>
+              <li className='nav-item active'>
+                <NavLink className='nav-link' to='/'>
                   Login
                 </NavLink>
               </li>
-              <li className='nav-item'>{renderLoginNavItem()}</li>
-              <li className='nav-item'>
-                <NavLink className='nav-link' to='/antd'>
-                  Antd Demo
+              <li className='nav-item active'>
+                <NavLink className='nav-link' to='/'>
+                  Register
                 </NavLink>
-              </li>
-              <li className='nav-item'>
-                <NavLink className='nav-link' to='/hocdemo'>
-                  HOC Demo
-                </NavLink>
-              </li>
-              <li className='nav-item dropdown'>
-                <NavLink
-                  className='nav-link dropdown-toggle'
-                  to='#'
-                  id='dropdownId'
-                  data-bs-toggle='dropdown'
-                  aria-haspopup='true'
-                  aria-expanded='false'
-                >
-                  Hooks
-                </NavLink>
-                <div className='dropdown-menu' aria-labelledby='dropdownId'>
-                  <NavLink className='dropdown-item' to='/usestate'>
-                    UseState
-                  </NavLink>
-                  <NavLink className='dropdown-item' to='/useeffect'>
-                    UseEffect
-                  </NavLink>
-                  <NavLink className='dropdown-item' to='/usecallback'>
-                    useCallback
-                  </NavLink>
-                  <NavLink className='dropdown-item' to='/usememo'>
-                    useMemo
-                  </NavLink>
-                  <NavLink className='dropdown-item' to='/useref'>
-                    useRef
-                  </NavLink>
-                  <NavLink className='dropdown-item' to='/useredux'>
-                    demo redux (number)
-                  </NavLink>
-                  <NavLink className='dropdown-item' to='/reduxfacebook'>
-                    demo facebook (redux app)
-                  </NavLink>
-                  <NavLink className='dropdown-item' to='/customhook'>
-                    useRoute(custom hook)
-                  </NavLink>
-                </div>
               </li>
             </ul>
-            <form className='d-flex my-2 my-lg-0'>
-              <input
-                className='form-control me-sm-2'
-                type='text'
-                placeholder='Search'
-              />
-              <button
-                className='btn btn-outline-success my-2 my-sm-0'
-                type='submit'
-              >
-                <NavLink className={'text-light'} to={'/search'}>
-                  Search
-                </NavLink>
-              </button>
-            </form>
           </div>
         </div>
       </nav>
-    </div>
+      <div className='menu-cat container'>
+        <ul className='navbar-cat'>
+          <li className='nav-item'>
+            <NavLink className={'actived'} to='/'>
+              Home
+            </NavLink>
+          </li>
+          <li className='nav-item'>
+            <NavLink to='/'>Man</NavLink>
+          </li>
+          <li className='nav-item'>
+            <NavLink to='/'>Woman</NavLink>
+          </li>
+          <li className='nav-item'>
+            <NavLink to='/'>Kid</NavLink>
+          </li>
+          <li className='nav-item'>
+            <NavLink to='/'>Sport</NavLink>
+          </li>
+        </ul>
+      </div>
+    </header>
   );
 }
