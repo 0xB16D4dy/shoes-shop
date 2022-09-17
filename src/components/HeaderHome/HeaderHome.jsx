@@ -3,21 +3,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 export default function HeaderHome() {
-  const { userLogin } = useSelector((state) => state.userReducer);
-  const renderLoginNavItem = () => {
-    if (userLogin == null) {
-      return (
-        <NavLink className='nav-link' to='/login'>
-          Login (Authorization - token)
-        </NavLink>
-      );
-    }
-    return (
-      <NavLink className='nav-link' to='/profile'>
-        Hello {userLogin.name} !
-      </NavLink>
-    );
-  };
+  
   return (
     <div>
       <nav className='navbar navbar-expand-sm navbar-dark bg-dark'>
@@ -46,7 +32,6 @@ export default function HeaderHome() {
                   Login
                 </NavLink>
               </li>
-              <li className='nav-item'>{renderLoginNavItem()}</li>
               <li className='nav-item'>
                 <NavLink className='nav-link' to='/antd'>
                   Antd Demo

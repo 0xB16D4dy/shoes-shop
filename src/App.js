@@ -1,6 +1,11 @@
+import HeaderHome from './components/HeaderHome/HeaderHome'
+import { Outlet } from 'react-router-dom';
+
+
 function App() {
   return <div className='App'>
-    <h1>hello</h1>
+    <HeaderHome></HeaderHome>
+    <Outlet></Outlet>
   </div>;
 }
 
