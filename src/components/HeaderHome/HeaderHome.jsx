@@ -23,7 +23,7 @@ export default function HeaderHome() {
           <div className='collapse navbar-collapse' id='collapsibleNavId'>
             <ul className='navbar-nav me-auto mt-2 mt-lg-0'>
               <li className='nav-item active'>
-                <NavLink className='nav-link' to='/'>
+                <NavLink className='nav-link' to='home'>
                   Home
                 </NavLink>
               </li>
