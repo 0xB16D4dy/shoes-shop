@@ -2,16 +2,17 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProfileApi } from '../../redux/reducers/userReducer';
+import {
+  getProfileApi,
+  updateProfileApi,
+} from '../../redux/reducers/userReducer';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import { Form, Input, Button, Radio } from 'antd';
+import { Form, Input, Button, Radio, Tabs, Pagination } from 'antd';
 
 export default function Profile() {
   const { userLogin } = useSelector((state) => state.userReducer);
-  const [userEdit, setUserEdit] = useState({ ...userLogin });
   const dispatch = useDispatch();
-  const [checked, setChecked] = useState(userLogin?.gender);
 
   useEffect(() => {
     //Khi trang vừa load lên thì gọi api => (dispatch lại getProfileApi đã xây dựng)
@@ -27,79 +28,8 @@ export default function Profile() {
   // };
 
   const onFinish = (values) => {
-    console.log(values);
-  };
-  const renderFormUpdate = () => {
-    return (
-      <Form
-        labelCol={{
-          span: 4,
-        }}
-        wrapperCol={{
-          span: 18,
-        }}
-        layout='horizontal'
-        onFinish={onFinish}
-        size='large'
-        className='frm-update'
-      >
-        <Form.Item label='Email' name='email'>
-          <Input value={userEdit?.email} />
-        </Form.Item>
-        <Form.Item
-          label='Name'
-          name='name'
-          rules={[
-            {
-              required: true,
-              message: 'Please input your Name!',
-            },
-          ]}
-        >
-          <Input value={userEdit?.name} />
-        </Form.Item>
-        <Form.Item label='Phone' name='phone'>
-          <Input value={userEdit?.phone} />
-        </Form.Item>
-        <Form.Item
-          label='Gender'
-          name='gender'
-          rules={[
-            {
-              required: true,
-              message: 'Please input your Gender!',
-            },
-          ]}
-        >
-          <Radio.Group>
-            <Radio value={true}> Male </Radio>
-            <Radio value={false}> Female </Radio>
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item
-          label='Password'
-          name='password'
-          rules={[
-            {
-              required: true,
-              message: 'Please input your Password!',
-            },
-          ]}
-        >
-          <Input.Password value={userEdit?.password} />
-        </Form.Item>
-        <Form.Item wrapperCol={{ offset: 10, span: 16 }}>
-          <Button
-            htmlType='submit'
-            wrapperCol={{
-              span: 16,
-            }}
-          >
-            Button
-          </Button>
-        </Form.Item>
-      </Form>
-    );
+    const actionThunk = updateProfileApi(values);
+    dispatch(actionThunk);
   };
 
   const renderOrderHistory = () => {
@@ -164,61 +94,100 @@ export default function Profile() {
               className='w-100'
             />
           </div>
-          <div className='wrapper-form'>{renderFormUpdate()}</div>
+          <div className='wrapper-form'>
+            <Form
+              labelCol={{
+                span: 4,
+              }}
+              wrapperCol={{
+                span: 18,
+              }}
+              layout='horizontal'
+              onFinish={onFinish}
+              size='large'
+              className='frm-update'
+              initialValues={userLogin}
+            >
+              <Form.Item label='Email' name='email'>
+                <Input disabled />
+              </Form.Item>
+              <Form.Item
+                label='Name'
+                name='name'
+                rules={[
+                  {
+                    pattern:
+                      /^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$/,
+                    message: `Name is Invalid format!`,
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                label='Phone'
+                name='phone'
+                rules={[
+                  {
+                    pattern: /(84|0[3|5|7|8|9])+([0-9]{8})\b/,
+                    message: `Phone is Invalid format!`,
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item label='Gender' name='gender'>
+                <Radio.Group>
+                  <Radio value={true}> Male </Radio>
+                  <Radio value={false}> Female </Radio>
+                </Radio.Group>
+              </Form.Item>
+              <Form.Item
+                label='Password'
+                name='password'
+                rules={[
+                  // {
+                  //   required: true,
+                  //   message: 'Please input your Password!',
+                  // },
+                  {
+                    pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
+                    message: `Should contain at least one upper case, one lower case, one digit, 8 from the mentioned characters`,
+                  },
+                ]}
+              >
+                <Input.Password />
+              </Form.Item>
+              <Form.Item wrapperCol={{ offset: 4, span: 18 }}>
+                <Button htmlType='submit' block type='primary'>
+                  Update
+                </Button>
+              </Form.Item>
+            </Form>
+          </div>
         </div>
         <hr />
         <div className='wrapper-detail'>
           <div className='header-detail'>
-            <div className='title-order-history'>
-              <h3>Order History</h3>
-            </div>
-            <div className='title-favorite'>
-              <h3>Favourite</h3>
-            </div>
+            <Tabs defaultActiveKey='1'>
+              <Tabs.TabPane tab='Order History' key='1'>
+                <div className='body-detail'>{renderOrderHistory()}</div>
+                <div className='pagination-detail'>
+                  <Pagination
+                    defaultCurrent={1}
+                    total={10}
+                    pageSize={1}
+                    showLessItems={true}
+                    className='pagination-detail'
+                  />
+                </div>
+                <div className='clearfix'></div>
+              </Tabs.TabPane>
+              <Tabs.TabPane tab='Favourite' key='2'>
+                Content of Tab Pane 2
+              </Tabs.TabPane>
+            </Tabs>
           </div>
-          <div className='body-detail'>{renderOrderHistory()}</div>
-          <div className='pagination-detail'>
-            <nav aria-label='Page navigation example'>
-              <ul className='pagination'>
-                <li className='page-item'>
-                  <a className='page-link' href='#' aria-label='Previous'>
-                    <span aria-hidden='true'>{'<'}</span>
-                  </a>
-                </li>
-                <li className='page-item'>
-                  <a className='page-link' href='#' aria-current='page'>
-                    1
-                  </a>
-                </li>
-                <li className='page-item'>
-                  <a className='page-link' href='#'>
-                    2
-                  </a>
-                </li>
-                <li className='page-item'>
-                  <a className='page-link' href='#'>
-                    ...
-                  </a>
-                </li>
-                <li className='page-item'>
-                  <a className='page-link' href='#'>
-                    9
-                  </a>
-                </li>
-                <li className='page-item'>
-                  <a className='page-link' href='#'>
-                    10
-                  </a>
-                </li>
-                <li className='page-item'>
-                  <a className='page-link' href='#' aria-label='Next'>
-                    <span aria-hidden='true'>{'>'}</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div className='clearfix'></div>
         </div>
       </div>
     </div>

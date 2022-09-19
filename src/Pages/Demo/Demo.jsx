@@ -1,9 +1,4 @@
-import React from 'react'
-import FormDemo from '../../components/FormProfile/FormProfile'
+import React from 'react';
 export default function Demo() {
-  return (
-    <div>
-        <FormDemo/>
-    </div>
-  )
+  return <div></div>;
 }

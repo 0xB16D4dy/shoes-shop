@@ -10,6 +10,7 @@ import {
   setStoreJson,
   USER_LOGIN,
 } from '../../utils/tools';
+import { Modal } from 'antd';
 
 const initialState = {
   userLogin: getStoreJson(USER_LOGIN),
@@ -39,7 +40,6 @@ export const loginApi = (userLogin) => {
       setCookie(ACCESS_TOKEN, result.data.content.accessToken, 15);
       setStore(ACCESS_TOKEN, result.data.content.accessToken);
       dispatch(getProfileApi());
-      history.push('/profile', result.data.content);
     } catch (err) {
       console.log(err);
       history.push('/Page404');
@@ -53,22 +53,30 @@ export const getProfileApi = (accessToken = getStore(ACCESS_TOKEN)) => {
       //Lấy thông tin profile => đưa lên redux
       const action = getProfileAction(result.data.content);
       dispatch(action);
-      // console.log(result.data.content);
+      console.log(result.data.content);
       //Lưu vào storage
       setStoreJson(USER_LOGIN, result.data.content);
+      history.push('/profile', result.data.content);
     } catch (error) {
       console.log(error);
     }
   };
 };
 
-export const updateProfileApi = (userUpdate) =>{
-  return async (dispatch) =>{
+export const updateProfileApi = (userUpdate) => {
+  return async (dispatch) => {
     try {
-      const result = await http.post('/Users/updateProfile', userUpdate)
-      dispatch(getProfileAction(result.data.content))
+      const result = await http.post('/Users/updateProfile', userUpdate);
+      // console.log(userUpdate, 'result:', result.data.content);
+      const success = () => {
+        Modal.success({
+          content: `Update profile ${result.data.content} !`,
+        });
+      };
+      dispatch(getProfileApi());
+      success();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
-}
+  };
+};
