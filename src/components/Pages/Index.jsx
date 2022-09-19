@@ -1,10 +1,14 @@
 import React,{useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import { getshoestApi } from '../../redux/reuducers/shoesReducer';
+import '../../assets/scss/pages/index.scss'
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Index() {
   const {arrShoes}=useSelector(state=>state.shoesReducer);
   const dispatch= useDispatch();
+  const navigate=useNavigate();
   const getAllshoesApi=()=>{
     const actionThunk = getshoestApi();
     dispatch(actionThunk)
@@ -24,7 +28,9 @@ export default function Index() {
             <p>{item.description}</p>
         </div>
         <div className="d-flex justify-content-between">
-          <div className='bg-warning'>buy now</div>
+          <div className='bg-warning'onClick={()=>{
+                  navigate(`/detail/${item.id}`);
+              }}>buy now</div>
           <div>85$</div>
         </div>
       </div>
@@ -43,7 +49,9 @@ export default function Index() {
                 <div className="content w-20">
                     <h1>{item.name}</h1>
                     <p>{item.description}</p>
-                    <button className='btn btn-warning'>buy now</button>
+                    <button className='btn btn-warning'onClick={()=>{
+                            navigate(`/detail/${item.id}`);
+                        }}>buy now</button>
                 </div>
           </div>
         </div>
@@ -57,11 +65,13 @@ export default function Index() {
                       <div className="content w-20">
                         <h1>{item.name}</h1>
                         <p>{item.description}</p>
-                        <button className='btn btn-warning'>buy now</button>
+                        <button className='btn btn-warning'onClick={()=>{
+                            navigate(`/detail/${item.id}`);
+                        }}>buy now</button>
                       </div>
                     </div>
                   </div>
-        }
+        } 
       })
     }
   return (
@@ -71,13 +81,11 @@ export default function Index() {
               <div className="carousel-inner">
                 {carouselShoes()}
             </div>
-            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true" />
-              <span className="visually-hidden">Previous</span>
+            <button className="carousel-control-prev"type="button"data-bs-target="#carouselExampleControls"data-bs-slide="prev">
+                <img src="./img/Polygon 2 (1).png"alt='...' />
             </button>
-            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true" />
-              <span className="visually-hidden">Next</span>
+            <button className="carousel-control-next"type="button"data-bs-target="#carouselExampleControls"data-bs-slide="next">
+                <img src="./img/Polygon 1.png"alt='...' />
             </button>
         </div>
       </div>

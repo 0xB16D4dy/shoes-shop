@@ -8,7 +8,7 @@ export default function HeaderHome() {
     <div>
       <nav className='navbar navbar-expand-sm navbar-dark bg-dark'>
         <div className='container'>
-          <NavLink className='navbar-brand' to='/'>
+          <NavLink className='navbar-brand' to='home'>
             Project Hook
           </NavLink>
           <button

@@ -3,6 +3,7 @@ import {http} from '../../utils/tools'
 
 const initialState = {
     arrShoes:[],
+    shoesDetail:[]
 }
 
 const productReducer = createSlice({
@@ -12,11 +13,15 @@ const productReducer = createSlice({
     getshoesAction:(state,action)=>{
       const arrShoes=action.payload;
       state.arrShoes=arrShoes
+    },
+    getshoesDetailAction:(state,action)=>{
+      const shoesDetail=action.payload;
+      state.shoesDetail=shoesDetail
     }
   }
 });
 
-export const {getshoesAction} = productReducer.actions
+export const {getshoesAction,getshoesDetailAction} = productReducer.actions
 
 export default productReducer.reducer
 
@@ -34,5 +39,17 @@ export const getshoestApi = () => {
       } catch (err) {
           console.log({ err });
       }
+  }
+}
+
+export const getshoesDetailApi=(id)=>{
+  return async(dispatch2)=>{
+    try{
+      let result =await http.get(`/Product/getbyid?id=${id}`);
+      const action=getshoesDetailAction(result.data.content);
+      dispatch2(action);
+    }catch(err){
+      console.log(err);
+    }
   }
 }

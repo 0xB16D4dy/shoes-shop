@@ -7,6 +7,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Page404 from './components/Page404/Page404'
 import './assets/scss/styles.scss'
 import Index from './components/Pages/Index';
+import Detail from'./components/Pages/Detail';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +17,9 @@ root.render(
       <Routes>
         <Route path='' element={<App />}>
           <Route path='home'element={<Index></Index>}></Route>
+          <Route path='detail'>
+             <Route path=':id' element={<Detail />} ></Route>
+          </Route>
 
           <Route path='*'element={<Page404></Page404>}></Route>
         </Route>
