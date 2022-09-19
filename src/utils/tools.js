@@ -48,6 +48,7 @@ export const config = {
 };
 
 export const {
+  eraseCookie,
   setCookie,
   getCookie,
   setStore,

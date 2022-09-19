@@ -3,27 +3,34 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { Provider } from 'react-redux';
 import { store } from './redux/configStore';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Page404 from './components/Page404/Page404';
-import Login from './components/Login/Login';
-import Profile from './components/Profile/Profile';
-import Search from './components/Search/Search';
+import {  Routes, Route, unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import Page404 from './Pages/Page404/Page404';
+import Login from './Pages/Login/Login';
+import Profile from './Pages/Profile/Profile';
+import Search from './Pages/Search/Search';
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import './assets/scss/styles.scss';
+import Demo from './Pages/Demo/Demo';
+
+//Cấu hình history (chuyển hướng không cần hook useNavigate)
+export const history = createBrowserHistory({ window });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
+      <HistoryRouter history={history}>
         <Routes>
           <Route path='' element={<App />}>
             <Route path='login' element={<Login />}></Route>
             <Route path='profile' element={<Profile />}></Route>
             <Route path='search' element={<Search />}></Route>
+            <Route path='demo' element={<Demo/>}></Route>
             <Route path='*' element={<Page404 />}></Route>
           </Route>
         </Routes>
-      </Router>
+      </HistoryRouter>
     </Provider>
   </React.StrictMode>
 );

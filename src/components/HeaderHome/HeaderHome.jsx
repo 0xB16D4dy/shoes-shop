@@ -1,8 +1,46 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import '../../assets/scss/components/HeaderHome/HeaderHome.scss';
+import { ACCESS_TOKEN, eraseCookie } from '../../utils/tools';
 
 export default function HeaderHome() {
+  const { userLogin } = useSelector((state) => state.userReducer);
+  const renderLoginNavItem = () => {
+    if (userLogin == null) {
+      return (
+        <NavLink className='nav-link' to='/login'>
+          Login
+        </NavLink>
+      );
+    }
+    return (
+      <NavLink className='nav-link active' to='/profile'>
+        Hello {userLogin.name}
+      </NavLink>
+    );
+  };
+  const renderRegisterNavItem = () => {
+    if (userLogin == null) {
+      return (
+        <NavLink className='nav-link' to='/register'>
+          Register
+        </NavLink>
+      );
+    }
+    return (
+      <a
+        className='nav-link'
+        href='/login'
+        onClick={() => {
+          window.localStorage.clear();
+          eraseCookie(ACCESS_TOKEN);
+        }}
+      >
+        Logout
+      </a>
+    );
+  };
   return (
     <header className='wrapper'>
       <nav className='navbar navbar-expand-sm navbar-dark bg-black'>
@@ -24,7 +62,7 @@ export default function HeaderHome() {
               <li className='nav-item active'>
                 <NavLink className='nav-link' to='/search'>
                   <div className='nav-search'>
-                    <i class='icon-search fa fa-search text-light'></i>
+                    <i className='icon-search fa fa-search text-light'></i>
                     Search
                   </div>
                 </NavLink>
@@ -32,20 +70,12 @@ export default function HeaderHome() {
               <li className='nav-item active'>
                 <NavLink className='nav-link' to='/cart'>
                   <div className='cart-product text-white'>
-                    <i class='fa-solid fa-cart-shopping'></i>(1)
+                    <i className='fa-solid fa-cart-shopping'></i>(1)
                   </div>
                 </NavLink>
               </li>
-              <li className='nav-item active'>
-                <NavLink className='nav-link' to='/login'>
-                  Login
-                </NavLink>
-              </li>
-              <li className='nav-item active'>
-                <NavLink className='nav-link' to='/register'>
-                  Register
-                </NavLink>
-              </li>
+              <li className='nav-item active'>{renderLoginNavItem()}</li>
+              <li className='nav-item active'>{renderRegisterNavItem()}</li>
             </ul>
           </div>
         </div>
