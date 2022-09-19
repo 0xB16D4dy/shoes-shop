@@ -5,7 +5,6 @@ import { store } from './redux/configStore'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Page404 from './components/Page404/Page404'
-
 import './assets/scss/styles.scss'
 import Index from './components/Pages/Index';
 

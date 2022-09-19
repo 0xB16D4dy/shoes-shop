@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { history } from '../index';
+// import { history } from '../index';
 export const config = {
   setCookie: (name, value, days) => {
     var expires = '';
@@ -15,8 +15,8 @@ export const config = {
     var ca = document.cookie.split(';');
     for (var i = 0; i < ca.length; i++) {
       var c = ca[i];
-      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+      while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
   },
@@ -76,7 +76,7 @@ http.interceptors.request.use(
     config.headers = {
       ...config.headers,
       Authorization: `Bearer ${token}`,
-      // TokenCybersoft: TOKEN_CYBERSOFT,
+      TokenCybersoft: TOKEN_CYBERSOFT,
     };
     // config.headers['Content-Type'] = 'application/json';
     return config;
@@ -87,23 +87,23 @@ http.interceptors.request.use(
 );
 
 /* Cấu hình kêt quả trả về */
-http.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (err) => {
-    //const originalRequest = err.config
-    if (err.response.status === 400 || err.response.status === 404) {
-      history.push('/');
-      return Promise.reject(err);
-    }
-    if (err.response.status === 401 || err.response.status === 403) {
-      history.push('/login');
-      alert('Token không hợp lệ ! Vui lòng đăng nhập lại !');
-      return Promise.reject(err);
-    }
-  }
-);
+// http.interceptors.response.use(
+//   (response) => {
+//     return response;
+//   },
+//   (err) => {
+//     //const originalRequest = err.config
+//     if (err.response.status === 400 || err.response.status === 404) {
+//       // history.push('/');
+//       return Promise.reject(err);
+//     }
+//     if (err.response.status === 401 || err.response.status === 403) {
+//       // history.push('/login');
+//       alert('Token không hợp lệ ! Vui lòng đăng nhập lại !');
+//       return Promise.reject(err);
+//     }
+//   }
+// );
 
 /*Status code:
   400: tham số gửi lên không hợp lệ => kết quả không tìm được (Bad Request);
