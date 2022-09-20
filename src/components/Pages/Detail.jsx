@@ -52,7 +52,7 @@ export default function Detail() {
       <div className="realate">
         <h3>realate product</h3>
         <div className="row">
-          {shoesDetail.relatedProducts.map((item,index)=>{
+          {shoesDetail.relatedProducts?.map((item,index)=>{
             return <div className="col-4" key={index}>
             <div className="card">
               <img src={item.image} alt='...' className='w-100' />

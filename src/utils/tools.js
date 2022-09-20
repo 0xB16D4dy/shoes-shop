@@ -104,12 +104,3 @@ http.interceptors.request.use(
 //   }
 // );
 
-/*Status code:
-  400: tham số gửi lên không hợp lệ => kết quả không tìm được (Bad Request);
-  404: tham số gửi lên hợp lệ nhưng không tìm thấy => có thể bị xoá rồi (not found);
-  200: ok, thành công;
-  201: đã được tạo thành công => (mình đã tạo rồi sau đó request tiếp thì sẽ trả 201) (Created)
-  401: không có quyền truy cập vào api đó (Unauthorize - có thể do token không hợp lệ hoặc bị admin chặn)
-  403: chưa đủ quyền truy cập vào api đó (ForBiden - token hợp lệ tuy nhiên token đó chưa đủ quyền truy cập vào api)
-  500: Lỗi xảy ra tại server (Nguyên nhân có thể frontend gửi dữ liệu không hợp lệ => backend trong quá trình xử lý code gây ra lỗi hoặc do backend code bị lỗi => Error in server )
- */
