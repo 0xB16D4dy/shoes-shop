@@ -12,20 +12,20 @@ export default function Register() {
         initialValues: { //Dữ liệu ban đầu mặc định của form
             email: '',
             password: '',
-            setpassword:'',
+            // setPassword:'',
             phone:'',
             name:'',
-            gender:''
+            gender:false
         },
         validationSchema:Yup.object().shape({
             email:Yup.string().required('email không được bỏ trống !').email('email không đúng định dạng !'),
             password: Yup.string().required('password không được bỏ trống !').min(1,'pass từ 1 - 32 ký tự!').max(32,'pass từ 1 - 32 ký tự!'),
-            setpassword:Yup.string().required('password không được bỏ trống !'),
+            // setPassword:Yup.string().required('setpassword không được bỏ trống !'),
             name:Yup.string().required('name không được bỏ trống !'),
             phone:Yup.string().required('phone không được bỏ trống !')
         }),
         onSubmit: (values) => {
-            // console.log(values);
+            console.log(values);
             
             dispatch(registerApi(values))
 
@@ -35,7 +35,7 @@ export default function Register() {
 
 
   return (
-    <div className='container d-flex row'onSubmit={frm.handleSubmit}>
+    <form className='container d-flex row'onSubmit={frm.handleSubmit}>
         <div className="form-group col-6">
             <p>Email</p>
             <input className='form-control' id='email' name='email'onChange={frm.handleChange} onBlur={frm.handleBlur} />
@@ -44,8 +44,8 @@ export default function Register() {
             <input className='form-control' id='password' name='password' onChange={frm.handleChange} onBlur={frm.handleBlur}/>
             {frm.errors.password ? <span className='text-danger'>{frm.errors.password}</span>: '' }
             <p>Password confirm</p>
-            <input className='form-control' id='setPassword' name='setPassword'onChange={frm.handleChange} onBlur={frm.handleBlur} />
-            {frm.errors.setpassword ? <span className='text-danger'>{frm.errors.setpassword}</span>: '' }
+            <input className='form-control' id='setPassword' name='setPassword' />
+            {/* {frm.errors.setPassword ? <span className='text-danger'>{frm.errors.setPassword}</span>: '' } */}
         </div>
 
         <div className="form-group col-6">
@@ -64,6 +64,6 @@ export default function Register() {
         <div className='form-group'>
             <button className='btn btn-success' type="submit">SUBMIT</button>
         </div>
-    </div>
+    </form>
   )
 }

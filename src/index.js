@@ -9,6 +9,7 @@ import './assets/scss/styles.scss'
 import Index from './components/Pages/Index';
 import Detail from'./components/Pages/Detail';
 import Register from './components/Pages/Register';
+import Carts from './components/Pages/Carts/Carts';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,7 +23,7 @@ root.render(
              <Route path=':id' element={<Detail />} ></Route>
           </Route>
           <Route path='register'element={<Register></Register>}></Route>
-
+          <Route path='carts'element={<Carts></Carts>}></Route>
           <Route path='*'element={<Page404></Page404>}></Route>
         </Route>
       </Routes>

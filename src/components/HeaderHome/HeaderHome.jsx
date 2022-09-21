@@ -38,8 +38,8 @@ export default function HeaderHome() {
                 </NavLink>
               </li>
               <li className='nav-item'>
-                <NavLink className='nav-link' to='/hocdemo'>
-                  HOC Demo
+                <NavLink className='nav-link' to='/carts'>
+                  Carts
                 </NavLink>
               </li>
               <li className='nav-item dropdown'>
