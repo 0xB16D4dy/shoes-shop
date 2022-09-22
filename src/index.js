@@ -33,6 +33,7 @@ root.render(
         <Routes>
           <Route path='' element={<App />}>
             <Route path='login' element={<Login />}></Route>
+            <Route path='/' element={<Index></Index>}></Route>
             <Route path='home' element={<Index></Index>}></Route>
             <Route path='profile' element={<Profile />}></Route>
             <Route path='search' element={<SearchPage />}></Route>
