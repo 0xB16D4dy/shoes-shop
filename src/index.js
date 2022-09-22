@@ -14,11 +14,13 @@ import Page404 from './Pages/Page404/Page404';
 import Login from './Pages/Login/Login';
 import Profile from './Pages/Profile/Profile';
 import SearchPage from './Pages/SearchPage/SearchPage';
+import Index from './components/Pages/Index';
+import Detail from './components/Pages/Detail';
+import Register from './components/Pages/Register';
+import Carts from './components/Pages/Carts/Carts';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import './assets/scss/styles.scss';
 import Demo from './Pages/Demo/Demo';
-import { ACCESS_TOKEN, getStore } from './utils/tools';
-import { replace } from 'formik';
 
 //Cấu hình history (chuyển hướng không cần hook useNavigate)
 export const history = createBrowserHistory({ window });
@@ -31,9 +33,15 @@ root.render(
         <Routes>
           <Route path='' element={<App />}>
             <Route path='login' element={<Login />}></Route>
+            <Route path='home' element={<Index></Index>}></Route>
             <Route path='profile' element={<Profile />}></Route>
             <Route path='search' element={<SearchPage />}></Route>
+            <Route path='detail'>
+              <Route path=':id' element={<Detail />}></Route>
+            </Route>
             <Route path='demo' element={<Demo />}></Route>
+            <Route path='register' element={<Register></Register>}></Route>
+            <Route path='carts' element={<Carts></Carts>}></Route>
             <Route path='*' element={<Page404 />}></Route>
           </Route>
         </Routes>

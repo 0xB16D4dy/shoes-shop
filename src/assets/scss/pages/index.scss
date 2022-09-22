@@ -1,0 +1,32 @@
+@import '../base/base';
+@import '../themes/variable';
+
+
+.home{
+    .carousel{
+        .container{
+            .carousel-inner{
+                .carousel-item{
+                    .d-flex{
+                        .image{
+                            img{
+                                // width: 100%
+                            }
+                        }
+                        .content{
+                            h1{
+                                @include text($fw-3,$fs-l,$color-3);
+                            }
+                            p{
+                                @include text($fw-3,$fs-md,$color-3)
+                            }
+                            button{
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
