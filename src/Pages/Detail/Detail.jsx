@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { getshoesDetailApi } from '../../redux/reducers/shoesReducer';
-import '../../assets/scss/pages/detail.scss'
 
 
 

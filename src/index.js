@@ -14,13 +14,13 @@ import Page404 from './Pages/Page404/Page404';
 import Login from './Pages/Login/Login';
 import Profile from './Pages/Profile/Profile';
 import SearchPage from './Pages/SearchPage/SearchPage';
-import Index from './components/Pages/Index';
-import Detail from './components/Pages/Detail';
-import Register from './components/Pages/Register';
-import Carts from './components/Pages/Carts/Carts';
+import Index from './Pages/Index/Index';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import './assets/scss/styles.scss';
 import Demo from './Pages/Demo/Demo';
+import Detail from './Pages/Detail/Detail';
+import Register from './Pages/Register/Register';
+import Carts from './Pages/Carts/Carts';
 
 //Cấu hình history (chuyển hướng không cần hook useNavigate)
 export const history = createBrowserHistory({ window });
