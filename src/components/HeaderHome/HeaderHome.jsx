@@ -68,7 +68,7 @@ export default function HeaderHome() {
                 </NavLink>
               </li>
               <li className='nav-item active'>
-                <NavLink className='nav-link' to='/cart'>
+                <NavLink className='nav-link' to='/carts'>
                   <div className='cart-product text-white'>
                     <i className='fa-solid fa-cart-shopping'></i>(1)
                   </div>

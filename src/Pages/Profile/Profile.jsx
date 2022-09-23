@@ -1,31 +1,16 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getProfileApi,
   updateProfileApi,
 } from '../../redux/reducers/userReducer';
-import * as Yup from 'yup';
-import { useFormik } from 'formik';
 import { Form, Input, Button, Radio, Tabs, Pagination } from 'antd';
+import { ACCESS_TOKEN, getStore } from '../../utils/tools';
+import { Navigate } from 'react-router-dom';
 
 export default function Profile() {
   const { userLogin } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    //Khi trang vừa load lên thì gọi api => (dispatch lại getProfileApi đã xây dựng)
-    dispatch(getProfileApi());
-  }, []);
-
-  // const handleChecked = (e) => {
-  //   if (e.target.name === 'male') {
-  //     setChecked(true);
-  //   } else if (e.target.name === 'female') {
-  //     setChecked(false);
-  //   }
-  // };
 
   const onFinish = (values) => {
     const actionThunk = updateProfileApi(values);
@@ -52,7 +37,6 @@ export default function Profile() {
             </thead>
             <tbody>
               {arrOrder?.orderDetail?.map((prod, index) => {
-                // console.log(prod);
                 return (
                   <tr key={index}>
                     <td>{index}</td>
@@ -81,6 +65,15 @@ export default function Profile() {
       );
     });
   };
+
+  useEffect(() => {
+    getProfileApi();
+  }, []);
+
+  if (!getStore(ACCESS_TOKEN)) {
+    alert('Đăng nhập để vào trang này!');
+    return <Navigate to='/login' />;
+  }
 
   return (
     <div>
@@ -159,7 +152,7 @@ export default function Profile() {
                 <Input.Password />
               </Form.Item>
               <Form.Item wrapperCol={{ offset: 4, span: 18 }}>
-                <Button htmlType='submit' block type='primary'>
+                <Button htmlType='submit' type='primary'>
                   Update
                 </Button>
               </Form.Item>

@@ -22,10 +22,12 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@ant-design/icons": "^4.7.0",
     "antd": "^4.23.2",
     "formik": "^2.2.9",
     "history": "^5.3.0",
     "node-sass": "^7.0.3",
+    "react-icon": "^1.0.0",
     "react-router-dom": "^6.4.0",
     "sass-loader": "^13.0.2",
     "yup": "^0.32.11"

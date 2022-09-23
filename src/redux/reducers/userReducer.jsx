@@ -23,9 +23,7 @@ const userReducer = createSlice({
     getProfileAction: (state, action) => {
       state.userLogin = action.payload;
     },
-    // getProfileUpdateAction: (state,action) =>{
-    //   state.userLogin = action.payload;
-    // }
+    
   },
 });
 
@@ -56,7 +54,7 @@ export const getProfileApi = (accessToken = getStore(ACCESS_TOKEN)) => {
       console.log(result.data.content);
       //Lưu vào storage
       setStoreJson(USER_LOGIN, result.data.content);
-      history.push('/profile', result.data.content);
+      history.push('/profile');
     } catch (error) {
       console.log(error);
     }
@@ -80,3 +78,5 @@ export const updateProfileApi = (userUpdate) => {
     }
   };
 };
+
+

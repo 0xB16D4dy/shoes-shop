@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import { getshoestApi } from '../../redux/reuducers/shoesReducer';
-import '../../assets/scss/pages/index.scss'
+import { getshoestApi } from '../../redux/reducers/shoesReducer';
+import '../../assets/scss/pages/Index/index.scss'
 import { useNavigate } from 'react-router-dom';
 
 
@@ -25,13 +25,13 @@ export default function Index() {
         <img src={item.image} alt='...' className='w-100' />
         <div className="info">
             <h3>{item.name}</h3>
-            <p>{item.description}</p>
+            <p>{item.shortDescription}</p>
         </div>
-        <div className="d-flex justify-content-between">
-          <div className='bg-warning'onClick={()=>{
+        <div className="d-flex justify-content-around align-items-center">
+          <button onClick={()=>{
                   navigate(`/detail/${item.id}`);
-              }}>buy now</div>
-          <div>85$</div>
+              }}>buy now</button>
+          <p>{item.quantity}$</p>
         </div>
       </div>
   </div>

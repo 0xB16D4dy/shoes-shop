@@ -2,7 +2,8 @@ import React from 'react';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { registerApi } from '../../redux/reuducers/registerReducer';
+import { registerApi } from '../../redux/reducers/registerReducer';
+import axios from 'axios';
 
 
 export default function Register() {
@@ -10,12 +11,12 @@ export default function Register() {
     //lay du lieu tu form
     const frm=useFormik({
         initialValues: { //Dữ liệu ban đầu mặc định của form
-            email: '',
-            password: '',
+            email: "",
+            password: "",
             // setPassword:'',
-            phone:'',
-            name:'',
-            gender:false
+            name:"",
+            gender:true,
+            phone:""
         },
         validationSchema:Yup.object().shape({
             email:Yup.string().required('email không được bỏ trống !').email('email không đúng định dạng !'),
@@ -26,9 +27,19 @@ export default function Register() {
         }),
         onSubmit: (values) => {
             console.log(values);
-            
             dispatch(registerApi(values))
-
+            
+            // axios({
+            //     url: 'https://shop.cyberlearn.vn/api/Users/signup',
+            //     method: 'POST',
+            //     data:values
+            // }).then(res=>{
+            //     console.log(res)
+            // }).catch(
+            //     err=>{
+            //         console.log(err)
+            //     }
+            // );
 
         }
     })
