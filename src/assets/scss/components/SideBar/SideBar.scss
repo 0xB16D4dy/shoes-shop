@@ -1,0 +1,26 @@
+.sidebar {
+  padding-right: 6px;
+  .sidebarWrapper {
+    .sidebarMenu {
+      .sidebarTitle {
+        h3 {
+        }
+      }
+      .sidebarList {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        .sidebarListTitle {
+        }
+        .sideBarListItem {
+          .ant-checkbox {
+            .ant-checkbox-input {
+            }
+            span {
+            }
+          }
+        }
+      }
+    }
+  }
+}

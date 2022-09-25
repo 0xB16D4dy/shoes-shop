@@ -1,55 +1,77 @@
-import React from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Divider, Input, Select } from 'antd';
 import {
+  getAllCategoryApi,
+  getProductByCategoryApi,
   searchProductAction,
   searchProductApi,
 } from '../../redux/reducers/productReducer';
-import SideBar from '../../assets/scss/components/SideBar/SideBar';
-import Product from '../../assets/scss/components/Product/Product';
+import SideBar from '../../components/SideBar/SideBar';
+import Product from '../../components/Product/Product';
 import { useSelector, useDispatch } from 'react-redux';
+import * as lodash from 'lodash';
+import { useMemo } from 'react';
 
 const { Search } = Input;
 const { Option } = Select;
 
 export default function SearchPage() {
-  const { arrProduct } = useSelector((state) => state.productReducer);
+  const { arrProduct, arrCat } = useSelector((state) => state.productReducer);
+  // const [checked, setChecked] = useState([]);
   const dispatch = useDispatch();
 
   const onSearch = (value) => {
-    if (value !== '') {
+    if (value) {
       const actionThunk = searchProductApi(value);
       dispatch(actionThunk);
     } else if (value === '') {
       dispatch(searchProductAction([]));
     }
   };
-  const totalProduct = () => {
+  const totalProduct = useMemo(() => {
     return arrProduct.reduce((accumulator, current, index) => {
-      console.log(accumulator);
       if (current) {
         accumulator += 1;
       }
       return accumulator;
     }, 0);
+  }, [arrProduct]);
+
+  const onSelect = (e) => {
+    let action = {};
+    if (e === true) {
+      action = searchProductAction(
+        lodash.orderBy(arrProduct, (prod) => prod.price, 'asc')
+      );
+    } else {
+      action = searchProductAction(
+        lodash.orderBy(arrProduct, (prod) => prod.price, 'desc')
+      );
+    }
+    dispatch(action);
   };
 
-  const handleCheck = (value) => {
-    console.log(value.name, '=', value.checked);
-  };
-  const onSelect = (e) => {
-    console.log(e);
-  };
+  const handleSearchByCat = useCallback((value) => {
+    dispatch(getProductByCategoryApi(value));
+  }, []);
+
+  useEffect(() => {
+    dispatch(getAllCategoryApi());
+  }, []);
+
+  // const filteredList = useMemo(handleCheck,[productList,selectCategory])
   return (
-    <div className='container' style={{ marginBottom: '105px' }}>
-      <h1 className='text-center'>Search</h1>
+    <div className='searchPage container' style={{ marginBottom: '105px' }}>
+      <h1 className='title-searchPage'>Search</h1>
       <div className='row'>
-        <div className='col-2'>
-          <SideBar handleCheck={handleCheck} total={totalProduct} />
+        <div className='col-left'>
+          <SideBar arrCat={arrCat} onSearchByCat={handleSearchByCat} />
         </div>
-        <div className='col-10'>
+        <div className='col-right'>
           <div className='frm-search'>
             <Search
+              className='search'
               placeholder='input product keyword ...'
               prefix={<SearchOutlined />}
               onSearch={onSearch}
@@ -60,28 +82,24 @@ export default function SearchPage() {
           <Divider />
           <div className='result mb-5'>
             <div className='wrapperResult bg-light'>
-              <div
-                className='title-wrapperResult d-flex justify-content-between'
-                style={{ padding: '20px' }}
-              >
-                <p>{totalProduct()} result</p>
+              <div className='title-wrapperResult'>
+                <p>{totalProduct} result</p>
                 <div className='result-sortBy d-flex justify-content-between align-items-center'>
                   <p>Sort By: </p>
                   <Select
-                    defaultValue='Decrease'
+                    className='select-option'
+                    defaultValue={true}
                     onChange={onSelect}
-                    style={{ marginLeft: '20px' }}
                   >
-                    <Option value='Increase'>Increase</Option>
-                    <Option value='Decrease'>Decrease</Option>
+                    <Option value={true}>Ascending</Option>
+                    <Option value={false}>Descending</Option>
                   </Select>
                 </div>
               </div>
               <div className='resultList'>
                 <div className='resultListItem'>
-                  <div className='row' style={{ margin: '0 24px' }}>
+                  <div className='row'>
                     {arrProduct.map((product, index) => {
-                      console.log(product);
                       return (
                         <div className='col-4 p-4' key={index}>
                           <Product product={product} />
