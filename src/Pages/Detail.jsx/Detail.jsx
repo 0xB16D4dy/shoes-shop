@@ -15,17 +15,6 @@ export default function Detail() {
       const action=getshoesDetailApi(id);
       dispatch(action)
     },[params.id])
-    // const rendersize=()=>{
-    //   return shoesDetail.map((item,index)=>{
-  
-    //     for(let index;index<shoesDetail.length;index++){
-    //         index=shoesDetail[index];
-    //         return <button key={item}>{index.size}</button>
-    //     }
-        
-        
-    //   })
-    // }
   
     return (
       <div className='container'>
@@ -39,7 +28,7 @@ export default function Detail() {
               <h3>Avaible sizze</h3>
               <p id="BtnSizeGiay"><button className='btn btn-success'>{shoesDetail.size}</button></p>
               <span>{shoesDetail.price}</span>
-              <div className="info">
+              <div className="d-flex">
                 <button>+</button>
                 <p>1</p>
                 <button>-</button>
@@ -50,21 +39,32 @@ export default function Detail() {
         <div className="realate">
           <h3>realate product</h3>
           <div className="row">
-            {shoesDetail.relatedProducts?.map((item,index)=>{
-              return <div className="col-4" key={index}>
-              <div className="card">
-                <img src={item.image} alt='...' className='w-100' />
-                <div className="info">
-                    <h3>{item.name}</h3>
-                    <p>{item.description}</p>
+              <div className="col-4" >
+                <div className="card">
+                  <img src={shoesDetail.image} alt='...' className='w-100' />
+                  <div className="info">
+                    <h3>{shoesDetail.name}</h3>
+                    <p>{shoesDetail.shortDescription}</p>
+                  </div>
+                  <div className="d-flex justify-content-around align-items-center">
+                      <button >buy now</button>
+                      <p>{shoesDetail.quantity}$</p>
+                  </div>
                 </div>
-                <div className="d-flex justify-content-between">
-                  <div className='bg-warning'>buy now</div>
-                  <div>85$</div>
+              </div> 
+              <div className="col-4" >
+                <div className="card">
+                  <img src={shoesDetail.image} alt='...' className='w-100' />
+                  <div className="info">
+                    <h3>{shoesDetail.name}</h3>
+                    <p>{shoesDetail.shortDescription}</p>
+                  </div>
+                  <div className="d-flex justify-content-around align-items-center">
+                      <button >buy now</button>
+                      <p>{shoesDetail.quantity}$</p>
+                  </div>
                 </div>
-              </div>
-          </div>
-            })}
+              </div> 
           </div>
         </div>
       </div>

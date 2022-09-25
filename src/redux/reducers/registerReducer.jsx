@@ -3,10 +3,7 @@ import { http } from '../../utils/tools';
 import axios from 'axios'
 
 const initialState = {
-    Register:[
-        {email:'',phone:'',passowrd:'',name:'',gender:true}
-    ]
-
+    
 }
 
 const registerReducer = createSlice({
