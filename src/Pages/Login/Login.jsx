@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { loginApi } from '../../redux/reducers/userReducer';
 import { useDispatch } from 'react-redux';
+import LoginFaceBook from '../../components/LoginFacebook/LoginFacebook';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -26,11 +27,6 @@ export default function Login() {
       dispatch(actionThunk);
     },
   });
-
-  const handleOnClick = () =>{
-    // const actionThunk = loginFaceBookApi(values);
-    // dispatch(actionThunk);
-  }
   return (
     <section className=' login container px-4'>
       <div className='wrapper-login  mx-5'>
@@ -70,22 +66,25 @@ export default function Login() {
                 ''
               )}
             </div>
-            <div
-              className='form-group text-center'
-              style={{ position: 'relative' }}
-            >
-              <NavLink className='register-link' to='/register'>
-                Register now ?
+            <div className='changePasswordWrapper'>
+              <NavLink
+                className='changePassword-link text-secondary'
+                to='/changepassword'
+              >
+                Change Password
               </NavLink>
-              <button className='btnLogin' type='submit'>
+            </div>
+            <div className='btnLoginWrapper'>
+              <button className='btnLogin ' type='submit'>
                 Login
               </button>
             </div>
-            <div className='form-group'>
-              <button className='login-facebook' onClick={handleOnClick}>
-                <i className='fa-brands fa-facebook'></i>
-                <p>Continue with Facebook</p>
-              </button>
+            <div></div>
+            <div className='form-group text-center'>
+              <LoginFaceBook />
+              <NavLink className='register-link' to='/register'>
+                Register now ?
+              </NavLink>
             </div>
           </form>
         </div>

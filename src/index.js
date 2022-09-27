@@ -21,6 +21,7 @@ import Demo from './Pages/Demo/Demo';
 import Detail from './Pages/Detail/Detail';
 import Register from './Pages/Register/Register';
 import Carts from './Pages/Carts/Carts';
+import ChangePassword from './Pages/ChangePassword/ChangePassword';
 
 //Cấu hình history (chuyển hướng không cần hook useNavigate)
 export const history = createBrowserHistory({ window });
@@ -43,6 +44,7 @@ root.render(
             <Route path='demo' element={<Demo />}></Route>
             <Route path='register' element={<Register></Register>}></Route>
             <Route path='carts' element={<Carts></Carts>}></Route>
+            <Route path='/changepassword' element={<ChangePassword />}></Route>
             <Route path='*' element={<Page404 />}></Route>
           </Route>
         </Routes>

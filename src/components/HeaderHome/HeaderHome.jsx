@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import '../../assets/scss/components/HeaderHome/HeaderHome.scss';
-import { ACCESS_TOKEN, eraseCookie } from '../../utils/tools';
+import { ACCESS_TOKEN, eraseCookie, eraseStore } from '../../utils/tools';
 
 export default function HeaderHome() {
   const { userLogin } = useSelector((state) => state.userReducer);
@@ -33,7 +33,7 @@ export default function HeaderHome() {
         className='nav-link'
         href='/login'
         onClick={() => {
-          window.localStorage.clear();
+          eraseStore();
           eraseCookie(ACCESS_TOKEN);
         }}
       >
