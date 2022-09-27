@@ -20,6 +20,49 @@
                 @include text($fw-3, $fs-md, $color-3);
               }
               button {
+                @include text($fw-2, $fs-md, $color-1);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .feature{
+    .container{
+      padding-top: 50px;
+      h1{
+        @include text($fw-4, $fs-l, $color-1);
+        background-color: #F21299;
+      }
+      .row{
+        .col-4{
+          padding: 20px;
+  
+          .card{
+            background-color: #F8F8F8;
+            img{
+            }
+            .info{
+              h3{
+                @include text($fw-3, $fs-mds, $color-3);
+              }
+              p{
+                @include text($fw-3, $fs-md, $color-2);
+              }
+            }
+            .d-flex{
+              button{
+                @include text($fw-3, $fs-mds, $color-3);
+                background-color: #E1B067;
+                border: none;
+                padding: 5px 50px;
+        
+              }
+              p{
+                @include text($fw-6, $fs-mds, $color-3);
+                background-color: $color-10;
+                padding: 5px 50px;
               }
             }
           }

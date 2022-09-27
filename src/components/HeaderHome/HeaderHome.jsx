@@ -45,7 +45,7 @@ export default function HeaderHome() {
     <header className='wrapper'>
       <nav className='navbar navbar-expand-sm navbar-dark bg-black'>
         <div className='container'>
-          <NavLink className='navbar-brand' to='/'>
+          <NavLink className='navbar-brand' to='index'>
             <img src='./img/iconBrand.png' alt='iconBrand' />
           </NavLink>
           <button
@@ -83,12 +83,12 @@ export default function HeaderHome() {
       <div className='menu-cat container'>
         <ul className='navbar-cat'>
           <li className='nav-item'>
-            <NavLink className={'actived'} to='/'>
+            <NavLink className={'actived'} to='index'>
               Home
             </NavLink>
           </li>
           <li className='nav-item'>
-            <NavLink to='/'>Man</NavLink>
+            <NavLink to=''>Man</NavLink>
           </li>
           <li className='nav-item'>
             <NavLink to='/'>Woman</NavLink>

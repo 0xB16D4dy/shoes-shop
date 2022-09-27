@@ -15,13 +15,14 @@ import Login from './Pages/Login/Login';
 import Profile from './Pages/Profile/Profile';
 import SearchPage from './Pages/SearchPage/SearchPage';
 import Index from './Pages/Index/Index';
-import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import 'antd/dist/antd.css';
 import './assets/scss/styles.scss';
 import Demo from './Pages/Demo/Demo';
 import Detail from './Pages/Detail/Detail';
 import Register from './Pages/Register/Register';
 import Carts from './Pages/Carts/Carts';
 import ChangePassword from './Pages/ChangePassword/ChangePassword';
+
 
 //Cấu hình history (chuyển hướng không cần hook useNavigate)
 export const history = createBrowserHistory({ window });
@@ -33,6 +34,11 @@ root.render(
       <HistoryRouter history={history}>
         <Routes>
           <Route path='' element={<App />}>
+            <Route path='index'element={<Index></Index>}></Route>
+            <Route path='detail'>
+              <Route path=':id'element={<Detail></Detail>}></Route>
+            </Route>
+            <Route path='register'element={<Register></Register>}></Route>
             <Route path='login' element={<Login />}></Route>
             <Route path='/' element={<Index></Index>}></Route>
             <Route path='home' element={<Index></Index>}></Route>

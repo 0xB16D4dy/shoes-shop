@@ -9,6 +9,6 @@ export const store = configureStore({
     userReducer,
     productReducer,
     shoesReducer,
-    registerReducer
+    registerReducer,
   },
 });
