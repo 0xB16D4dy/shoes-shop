@@ -1,7 +1,12 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { getshoesDetailApi } from '../../redux/reducers/shoesReducer';
+import { getLikeApi } from '../../redux/reducers/userReducer';
 
 export default function Product({ product }) {
-  console.log(product);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <div className='card '>
       <div className='card-img'>
@@ -10,16 +15,28 @@ export default function Product({ product }) {
       <div className='card-body'>
         <p>{product.name}</p>
         <div className='card-body-content'>
-          <span>
-            <i class='fa-solid fa-heart'></i>
+          <span
+            style={{ cursor: 'pointer' }}
+            onClick={() => {
+              dispatch(getLikeApi(product.id));
+            }}
+          >
+            <i className='fa-solid fa-heart'></i>
           </span>
           <span>
-            <i class='fa-solid fa-dollar-sign'></i>
+            <i className='fa-solid fa-dollar-sign'></i>
             {product.price}
           </span>
         </div>
         <div className='footer'>
-          <button className='btn-buy'>Buy</button>
+          <button
+            className='btn-buy'
+            onClick={() => {
+              navigate(`/detail/${product.id}`);
+            }}
+          >
+            Buy now
+          </button>
         </div>
       </div>
     </div>

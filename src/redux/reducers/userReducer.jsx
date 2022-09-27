@@ -100,6 +100,23 @@ export const getProductFavoriteApi = () => {
   };
 };
 
+export const getLikeApi = (id)=>{
+  return async (dispatch)=>{
+    try{
+      const result = await http.get('/Users/like?productId='+id)
+      const success = () => {
+        Modal.success({
+          content: `${result.data.content} !`,
+        });
+      };
+      success()
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+}
+
 export const getUnLikeApi = (id) => {
   return async (dispatch) => {
     try {

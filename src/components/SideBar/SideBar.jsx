@@ -8,9 +8,6 @@ function SideBar({ arrCat, onSearchByCat }) {
       return { label: cat.id, key: cat.id };
     });
   };
-
-  console.log('re-render');
-
   return (
     <div className='sidebar'>
       <div className='sidebarWrapper'>
