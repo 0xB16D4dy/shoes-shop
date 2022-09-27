@@ -3,7 +3,8 @@ import {http} from '../../utils/tools'
 
 const initialState = {
     arrShoes:[],
-    shoesDetail:[]
+    shoesDetail:[],
+    arrShoeCarts: [],
 }
 
 const productReducer = createSlice({
@@ -17,11 +18,27 @@ const productReducer = createSlice({
     getshoesDetailAction:(state,action)=>{
       const shoesDetail=action.payload;
       state.shoesDetail=shoesDetail
-    }
+    },
+    addShoeToCartAction: (state, action) => {
+      const shoe = action.payload;
+      let index = state.arrShoeCarts.findIndex((item) => item.id === shoe.id);
+      if (index !== -1) {
+        state.arrShoeCarts[index].quantity += 1;
+      } else {
+        state.arrShoeCarts.push(shoe);
+      }
+    },
+    deleteShoeToCartAction: (state, action) => {
+      const id = action.payload;
+      state.arrShoeCarts = state.arrShoeCarts.filter((item) => item.id !== id);
+    },
+    cleanCart: (state, action) => {
+      state.arrShoeCarts = action.payload;
+    },
   }
 });
 
-export const {getshoesAction,getshoesDetailAction} = productReducer.actions
+export const {getshoesAction,getCartAction,getshoesDetailAction,addShoeToCartAction,cleanCart,deleteShoeToCartAction} = productReducer.actions
 
 export default productReducer.reducer
 
@@ -53,3 +70,16 @@ export const getshoesDetailApi=(id)=>{
     }
   }
 }
+
+export const orderCartApi = (orderCart) => {
+  return async (dispatch) => {
+    try {
+      const result = await http.post('/Users/order', orderCart);
+      alert(result.data.content);
+      const action = cleanCart([]);
+      dispatch(action);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

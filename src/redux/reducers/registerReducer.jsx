@@ -23,21 +23,14 @@ export default registerReducer.reducer
 
 export const registerApi=(values)=>{
     return async(dispatch)=>{
-        var mess = '';
-        try {
-            let result = await axios ({
-                url: 'https://shop.cyberlearn.vn/api/Users/signup',
-                method: 'POST' ,
-                data:values,
-                
-           });
-            mess = result.data
-            console.log(mess.content)
-            alert ('ban da dang ki thanh cong');
+        try{
+            const result = await http.post('Users/signup', values);
+            console.log(result.data.content);
+            alert('dang ki thanh cong')
         }
-        catch (err){
+        catch(err){
             console.log(err)
-            alert('dang ki khong thanh cong')
+            alert('email da ton tai vui long dang ki lai')
         }
 }
 }

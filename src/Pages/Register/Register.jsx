@@ -24,7 +24,7 @@ export default function Register() {
             // setPassword:Yup.string().required('setpassword không được bỏ trống !'),
             name:Yup.string().required('name không được bỏ trống !'),
             phone:Yup.number().required('phone phai la so va không được bỏ trống !'),
-            // gender:Yup.required('render khong duoc de trong')
+            gender:Yup.boolean().required('render khong duoc de trong')
         }),
         onSubmit: (values) => {
             console.log(values);
@@ -55,11 +55,11 @@ export default function Register() {
             <input className='form-control' id='phone' name='phone'onChange={frm.handleChange} onBlur={frm.handleBlur} />
             {frm.errors.phone ? <span className='text-danger'>{frm.errors.phone}</span>: '' }
             <div className="d-flex mt-4">
-            <p>Gender</p>
-            <input type="radio" name="gender" value="true" className='mx-2'/>
-                <label for="">Male</label>
-            <input type="radio" name="gender" value="false" className='mx-2'/>
-                <label for="">Female</label>
+                <p>Gender</p>
+                <input type="radio" name="gender" value={true} className='mx-2'/>
+                    <label for="">Male</label>
+                <input type="radio" name="gender" value={false} className='mx-2'/>
+                    <label for="">Female</label>
             </div>
             <button className='btn btn-success mt-4' type="submit">SUBMIT</button>
         </div>
