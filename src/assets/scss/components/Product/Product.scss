@@ -16,16 +16,19 @@
   }
   .card-body {
     p {
-      font-size: $fs-mds;
-      font-weight: $fw-6;
+      font-size: 16px;
+      font-weight: 400;
       margin-bottom: 20px;
-      height: 80px;
+      height: 24px;
       display: inline-block;
     }
     .card-body-content {
       display: flex;
       justify-content: space-between;
-      span {
+      &.content-price{
+        font-size: 18px;
+      }
+      p {
         font-size: $fs-md;
         .fa-heart {
           color: red;
@@ -36,6 +39,7 @@
       display: flex;
       flex-direction: row-reverse;
       .btn-buy {
+        width: 100%;
         margin-top: 20px;
         background: #1890ff;
         color: $color-1;

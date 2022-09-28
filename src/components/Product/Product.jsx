@@ -15,18 +15,17 @@ export default function Product({ product }) {
       <div className='card-body'>
         <p>{product.name}</p>
         <div className='card-body-content'>
-          <span
+          <p className='content-price'>
+            {product.price}$
+          </p>
+          <p
             style={{ cursor: 'pointer' }}
             onClick={() => {
               dispatch(getLikeApi(product.id));
             }}
           >
             <i className='fa-solid fa-heart'></i>
-          </span>
-          <span>
-            <i className='fa-solid fa-dollar-sign'></i>
-            {product.price}
-          </span>
+          </p>
         </div>
         <div className='footer'>
           <button

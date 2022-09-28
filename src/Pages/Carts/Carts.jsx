@@ -33,10 +33,13 @@ export default function Carts() {
           </td>
           <td>{item.name}</td>
           <td>{item.price}</td>
-          <td>{item.quantity}</td>
+          <td className='item-quantity'>
+            <button className='btn-asc'>+</button>
+            {item.quantity}
+            <button className='btn-desc'>-</button>
+          </td>
           <td>{item.price * item.quantity}</td>
           <td>
-            <button className='btn-edit'>edit</button>
             <button
               className='btn-delete'
               onClick={() => {
