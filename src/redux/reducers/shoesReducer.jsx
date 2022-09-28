@@ -1,23 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit'
-import {http} from '../../utils/tools'
+import { createSlice } from '@reduxjs/toolkit';
+import { http } from '../../utils/tools';
 
 const initialState = {
-    arrShoes:[],
-    shoesDetail:[],
-    arrShoeCarts: [],
-}
+  arrShoes: [],
+  shoesDetail: [],
+  arrShoeCarts: [],
+};
 
 const productReducer = createSlice({
   name: 'shoesReducer',
   initialState,
   reducers: {
-    getshoesAction:(state,action)=>{
-      const arrShoes=action.payload;
-      state.arrShoes=arrShoes
+    getshoesAction: (state, action) => {
+      const arrShoes = action.payload;
+      state.arrShoes = arrShoes;
     },
-    getshoesDetailAction:(state,action)=>{
-      const shoesDetail=action.payload;
-      state.shoesDetail=shoesDetail
+    getshoesDetailAction: (state, action) => {
+      const shoesDetail = action.payload;
+      state.shoesDetail = shoesDetail;
     },
     addShoeToCartAction: (state, action) => {
       const shoe = action.payload;
@@ -35,41 +35,44 @@ const productReducer = createSlice({
     cleanCart: (state, action) => {
       state.arrShoeCarts = action.payload;
     },
-  }
+  },
 });
 
-export const {getshoesAction,getCartAction,getshoesDetailAction,addShoeToCartAction,cleanCart,deleteShoeToCartAction} = productReducer.actions
+export const {
+  getshoesAction,
+  getshoesDetailAction,
+  addShoeToCartAction,
+  deleteShoeToCartAction,
+  cleanCart,
+} = productReducer.actions;
 
-export default productReducer.reducer
-
+export default productReducer.reducer;
 
 /* ------------ action api -------------------- */
 export const getshoestApi = () => {
-  return async (dispatch1,getState) => {
+  return async (dispatch1, getState) => {
+    // console.log(getState())
+    try {
+      const result = await http.get('/product');
+      const action = getshoesAction(result.data.content);
+      dispatch1(action);
+    } catch (err) {
+      console.log({ err });
+    }
+  };
+};
 
-      // console.log(getState())
-      try {
-          const result = await http.get('/product');
-
-          const action = getshoesAction(result.data.content)
-          dispatch1(action)
-      } catch (err) {
-          console.log({ err });
-      }
-  }
-}
-
-export const getshoesDetailApi=(id)=>{
-  return async(dispatch2)=>{
-    try{
-      let result =await http.get(`/Product/getbyid?id=${id}`);
-      const action=getshoesDetailAction(result.data.content);
+export const getshoesDetailApi = (id) => {
+  return async (dispatch2) => {
+    try {
+      let result = await http.get(`/Product/getbyid?id=${id}`);
+      const action = getshoesDetailAction(result.data.content);
       dispatch2(action);
-    }catch(err){
+    } catch (err) {
       console.log(err);
     }
-  }
-}
+  };
+};
 
 export const orderCartApi = (orderCart) => {
   return async (dispatch) => {

@@ -2,10 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import '../../assets/scss/components/HeaderHome/HeaderHome.scss';
-import { ACCESS_TOKEN, eraseCookie } from '../../utils/tools';
+import { ACCESS_TOKEN, eraseCookie, eraseStore } from '../../utils/tools';
 
 export default function HeaderHome() {
   const { userLogin } = useSelector((state) => state.userReducer);
+  const { arrShoeCarts } = useSelector((state) => state.shoesReducer);
+
   const renderLoginNavItem = () => {
     if (userLogin == null) {
       return (
@@ -33,13 +35,22 @@ export default function HeaderHome() {
         className='nav-link'
         href='/login'
         onClick={() => {
-          window.localStorage.clear();
+          eraseStore();
           eraseCookie(ACCESS_TOKEN);
         }}
       >
         Logout
       </a>
     );
+  };
+  const totalCart = () => {
+    return arrShoeCarts.reduce((accumulate, currentCart) => {
+      let count = 0;
+      if (currentCart) {
+        count += 1;
+      }
+      return accumulate + count;
+    }, 0);
   };
   return (
     <header className='wrapper'>
@@ -70,7 +81,7 @@ export default function HeaderHome() {
               <li className='nav-item active'>
                 <NavLink className='nav-link' to='/carts'>
                   <div className='cart-product text-white'>
-                    <i className='fa-solid fa-cart-shopping'></i>(1)
+                    <i className='fa-solid fa-cart-shopping'></i>({totalCart()})
                   </div>
                 </NavLink>
               </li>

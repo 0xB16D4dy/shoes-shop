@@ -1,15 +1,20 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getProfileApi,
   updateProfileApi,
+  getProductFavoriteApi,
+  getUnLikeApi,
 } from '../../redux/reducers/userReducer';
-import { Form, Input, Button, Radio, Tabs, Pagination } from 'antd';
+import { Form, Input, Button, Radio, Tabs, Pagination, Divider } from 'antd';
+import { DislikeOutlined, LikeOutlined } from '@ant-design/icons';
 import { ACCESS_TOKEN, getStore } from '../../utils/tools';
 import { Navigate } from 'react-router-dom';
 
 export default function Profile() {
-  const { userLogin } = useSelector((state) => state.userReducer);
+  const { userLogin, productFavoriteList } = useSelector(
+    (state) => state.userReducer
+  );
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
@@ -66,8 +71,53 @@ export default function Profile() {
     });
   };
 
+  const renderFavorite = () => {
+    return productFavoriteList.map((prod, index) => {
+      return (
+        <div key={index}>
+          <div className='wrapper-favorite'>
+            <table className='table'>
+              <thead>
+                <tr className='text-center'>
+                  <th>id</th>
+                  <th>image</th>
+                  <th>name</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className='text-center' style={{ lineHeight: '8' }}>
+                  <td>{prod.id}</td>
+                  <td>
+                    <img src={prod.image} alt='' width={100} height={100} />
+                  </td>
+                  <td>{prod.name}</td>
+                  <td>
+                    <Button
+                      onClick={() => {
+                        dispatch(getUnLikeApi(prod.id));
+                      }}
+                      icon={
+                        <DislikeOutlined
+                          style={{ color: '#1890ff', fontSize: '30px' }}
+                        />
+                      }
+                      size='large'
+                      style={{ border: 'none', boxShadow: 'none' }}
+                    ></Button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    });
+  };
+
   useEffect(() => {
-    getProfileApi();
+    dispatch(getProfileApi());
+    dispatch(getProductFavoriteApi());
   }, []);
 
   if (!getStore(ACCESS_TOKEN)) {
@@ -177,7 +227,7 @@ export default function Profile() {
                 <div className='clearfix'></div>
               </Tabs.TabPane>
               <Tabs.TabPane tab='Favourite' key='2'>
-                Content of Tab Pane 2
+                {renderFavorite()}
               </Tabs.TabPane>
             </Tabs>
           </div>

@@ -35,42 +35,54 @@ section {
             font-size: 18px;
             line-height: 24px;
           }
-          button.btnLogin {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 15px 37px;
-            background: #6200ee;
-            box-shadow: 0px 4px 5px rgb(0 0 0 / 14%),
-              0px 1px 10px rgb(0 0 0 / 12%), 0px 2px 4px rgb(0 0 0 / 20%);
-            border-radius: 50px;
-            border: none;
-            font-weight: 500;
-            font-size: 21px;
-            line-height: 16px;
-            color: #fff;
-          }
           .login-facebook {
             background: #1877f2;
+            font-weight: $fw-4;
+            line-height: 1;
+            font-size: $fs-md;
             width: 100%;
             margin-top: 35px;
-            box-shadow: 0px 38.4869px 71.4756px rgba(0, 0, 0, 0.07);
-            border-radius: 20.9968px;
-            padding: 10.3px;
+            margin-bottom: 10px;
+            box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14),
+              0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 9px 34px;
             border: none;
             color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
+            border-radius: 50px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            -ms-border-radius: 50px;
+            -o-border-radius: 50px;
             .fa-facebook {
               font-size: 43px;
               margin-right: 32px;
             }
-            p {
-              font-weight: 400;
-              font-size: 20px;
-              line-height: 24px;
-            }
+          }
+        }
+        .btnLoginWrapper {
+          text-align: center;
+          button.btnLogin {
+            padding: 23px 34px;
+            width: 100%;
+            font-size: 20px;
+            background: #1877f2;
+            box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14),
+              0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 50px;
+            border: none;
+            font-weight: 500;
+            line-height: 16px;
+            color: #fff;
+          }
+        }
+        .changePasswordWrapper {
+          margin: 10px 0;
+          text-align: right;
+          .changePassword-link {
+            color: #8e8e8e;
           }
         }
       }
