@@ -7,6 +7,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import {
   deleteShoeToCartAction,
   orderCartApi,
+  tangGiamSoLuong
 } from '../../redux/reducers/shoesReducer';
 import {
   ACCESS_TOKEN,
@@ -22,6 +23,7 @@ export default function Carts() {
   const renderCarts = () => {
     // console.log(arrCarts);
     return arrShoeCarts?.map((item, index) => {
+        console.log(item)
       return (
         <tr key={index}>
           <td>
@@ -33,8 +35,14 @@ export default function Carts() {
           </td>
           <td>{item.name}</td>
           <td>{item.price}</td>
-          <td>{item.quantity}</td>
-          <td>{item.price * item.quantity}</td>
+          <td>
+          <button className='btn btn-primary'onClick={()=>
+            dispatch(tangGiamSoLuong([item.id,true]))}>+</button>
+            {item.soLuong}
+            <button className='btn btn-primary'onClick={()=>
+            dispatch(tangGiamSoLuong([item.id,false]))}>-</button>
+            </td>
+          <td>{item.price * item.soLuong}</td>
           <td>
             <button className='btn-edit'>edit</button>
             <button
