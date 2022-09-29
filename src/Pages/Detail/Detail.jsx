@@ -7,6 +7,7 @@ import {
   tangGiamDetail,
 } from '../../redux/reducers/shoesReducer';
 import '../../assets/scss/pages/Detail/detail.scss';
+import { useRef } from 'react';
 
 export default function Detail() {
   const params = useParams();
