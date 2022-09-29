@@ -3,12 +3,17 @@
   .sidebarWrapper {
     .sidebarMenu {
       .sidebarTitle {
+        font-size: ($fs-md + 4);
+        margin-top: ($mg-4 + 3);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         h3 {
           @media screen and (max-width: 768px) {
-            font-size: 20px;
+            font-size: $fs-md;
           }
           @media screen and (max-width: 576px) {
-            font-size: 16px;
+            font-size: $fs-sm;
           }
         }
       }

@@ -12,7 +12,7 @@
       width: calc(100% - 70%);
       img {
         width: 100%;
-        padding: 25px;
+        padding: ($pd-2 + 5);
         border-radius: 50%;
         -webkit-border-radius: 50%;
         -moz-border-radius: 50%;
@@ -24,7 +24,7 @@
         display: flex;
         justify-content: center;
         img {
-          padding: 50px;
+          padding: $pd-5;
           width: 50%;
         }
       }
@@ -32,7 +32,7 @@
     .wrapper-form {
       width: calc(100% - 30%);
       .frm-update {
-        margin-top: 37px;
+        margin-top: ($mg-3 + 7);
       }
       @media screen and (max-width: 768px) {
         width: 100%;
@@ -47,25 +47,20 @@
     }
   }
   .antd-tab-detail {
-    margin-bottom: 65px;
+    margin-bottom: ($mg-6 + 5);
     .body-detail {
       .date-generate {
-        background: linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 0.2),
-            rgba(0, 0, 0, 0.2)
-          ),
-          linear-gradient(180deg, #cb0dc3 0%, #7d0db1 100%);
+        background: $bg-linear-3rd;
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       .wrapper-order {
         .table {
-          margin-bottom: 90px;
+          margin-bottom: $mg-9;
           thead {
             .thead-background {
-              background: #d9d9d9;
+              background: $bg-primary;
             }
           }
         }
@@ -78,6 +73,6 @@
 
   .clearfix {
     clear: right;
-    margin-bottom: 103px;
+    margin-bottom: ($mg-10 + 3);
   }
 }

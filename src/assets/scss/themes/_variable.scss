@@ -1,55 +1,72 @@
-
 //color
 $color-1: #fff;
 $color-2: #d9d9d9;
 $color-3: #000;
 $color-4: #140101;
-$color-5: #1ED90E;
+$color-5: #1ed90e;
 $color-6: #ae18e2;
 $color-7: #fffcfc;
 $color-8: #f5f5f5;
 $color-9: #f8f8f8;
 $color-10: #dedddc;
-$color-11: #CBC9C9;
-$color-12: #FC0303;
-$color-13:#6181F3;
-$color-14:#D017EE;
+$color-11: #cbc9c9;
+$color-12: #fc0303;
+$color-13: #6181f3;
+$color-14: #d017ee;
+$color-15: #1890ff;
 
-$bg-linear-1: linear-gradient(180deg, #6181F3 0%, #7C97F5 99.48%);
-$bg-linear-2: linear-gradient(270deg, rgba(62, 32, 248, 0.9) 5.14%, #D017EE 89.71%);
+//background-gradient
+$bg-linear-1: linear-gradient(180deg, #6181f3 0%, #7c97f5 99.48%);
+$bg-linear-2: linear-gradient(
+  270deg,
+  rgba(62, 32, 248, 0.9) 5.14%,
+  #d017ee 89.71%
+);
+$bg-linear-3rd: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+  linear-gradient(180deg, #cb0dc3 0%, #7d0db1 100%);
+
+//background
+$bg-primary: #d9d9d9;
+$bg-secondary: #eb5757;
+$bg-color-3rd: rgba(33, 33, 33, 0.08);
+$bg-color-4th: #1877f2;
+$bg-color-5th: #cfcfcf;
+
 //button
-$bg-button: #F8B653;
-$bg-button-submit:#ae18e2;
+$bg-button: #f8b653;
+$bg-button-submit: #ae18e2;
+
 // navbar
 $color-navbar-: #9f9f9f;
 //carousel
-$color-button-carousel: #D9D9D9;
+$color-button-carousel: #d9d9d9;
 $color-boder-button-carousel: #9a9a9a;
 
 // font weight
-$fw-2:200;
+$fw-2: 200;
 $fw-3: 300;
 $fw-4: 400;
 $fw-5: 500;
-$fw-6:600;
+$fw-6: 600;
 $fw-7: 700;
 //font size
 $fs-ssm: 10px;
-$fs-sn:12px;
-$fs-ss:15px;
+$fs-sn: 12px;
+$fs-ss: 14px;
 $fs-sm: 16px;
 $fs-md: 20px;
 $fs-mds: 24px;
 $fs-mdl: 30px;
 $fs-l: 40px;
 
-
 $text-color-primary: #000;
 $text-color-2nd: #9a9a9a;
 $text-color-3rd: #fff;
 $text-color-4th: red;
-$text-color-5th: #FC0303;
-$text-color-6th: #1ED90E;
+$text-color-5th: #fc0303;
+$text-color-6th: #1ed90e;
+$text-color-7th: #f50e0e;
+$text-color-8th: #8e8e8e;
 
 $text-shadow-primary: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
@@ -57,12 +74,27 @@ $text-shadow-primary: 0px 4px 4px rgba(0, 0, 0, 0.25);
 // $bg-item-rendertable: $bg-color-9th;
 $margin-item-rendertable: 30px;
 
+// margin
+$mg-1: 10px;
+$mg-2: 20px;
+$mg-3: 30px;
+$mg-4: 40px;
+$mg-5: 50px;
+$mg-6: 60px;
+$mg-7: 70px;
+$mg-8: 80px;
+$mg-9: 90px;
+$mg-10: 100px;
 
+//padding
+$pd-1: 10px;
+$pd-2: 20px;
+$pd-3: 30px;
+$pd-4: 40px;
+$pd-5: 50px;
 
-
-
-@mixin text ($fw:$fw-sm,$fs:$fs-sm,$cl:$color-1) {
-    font-weight: $fw;
-    font-size: $fs;
-    color:$cl;
+@mixin text($fw: $fw-3, $fs: $fs-sm, $cl: $color-1) {
+  font-weight: $fw;
+  font-size: $fs;
+  color: $cl;
 }

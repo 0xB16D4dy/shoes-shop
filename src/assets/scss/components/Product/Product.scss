@@ -10,26 +10,30 @@
     img {
       width: 80%;
       display: inline-block;
-      transform: translate(15%, 0px);
       overflow: hidden;
+      transform: translate(15%, 0px);
+      -webkit-transform: translate(15%, 0px);
+      -moz-transform: translate(15%, 0px);
+      -ms-transform: translate(15%, 0px);
+      -o-transform: translate(15%, 0px);
     }
   }
   .card-body {
     p {
-      font-size: 16px;
-      font-weight: 400;
-      margin-bottom: 20px;
+      font-size: $fs-sm;
+      font-weight: $fw-4;
+      margin-bottom: $mg-2;
       height: 24px;
       display: inline-block;
       @media screen and (max-width: 768px) {
-        font-size: 14px;
+        font-size: $fs-ss;
       }
     }
     .card-body-content {
       display: flex;
       justify-content: space-between;
       &.content-price {
-        font-size: 18px;
+        font-size: ($fs-sm+2);
         @media screen and (max-width: 768px) {
           font-size: $fs-sm;
         }
@@ -37,7 +41,7 @@
       p {
         .fa-heart {
           font-size: $fs-md;
-          color: red;
+          color: $color-12;
         }
       }
     }
@@ -46,15 +50,15 @@
       flex-direction: row-reverse;
       .btn-buy {
         width: 100%;
-        margin-top: 20px;
-        background: #1890ff;
+        margin-top: $mg-2;
+        background: $color-15;
         color: $color-1;
         padding: 6.5px 40px;
-        font-size: 16px;
+        font-size: $fs-sm;
         border: none;
-        border-color: #1890ff;
+        border-color: $color-15;
         @media screen and (max-width: 768px) {
-          font-size: 14px;
+          font-size: $fs-ss;
           margin-top: 0px;
         }
       }

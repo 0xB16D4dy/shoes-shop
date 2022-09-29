@@ -24,7 +24,7 @@ function SideBar({ arrCat, onSearchByCat }) {
   useEffect(() => {
     // window.addEventListener('resize', onResize);
     onResize();
-    checkcollapsed()
+    checkcollapsed();
     // return () => window.removeEventListener('resize', onResize);
   }, [size]);
   return (
@@ -33,13 +33,6 @@ function SideBar({ arrCat, onSearchByCat }) {
         <div className='sidebarMenu'>
           <div
             className='sidebarTitle'
-            style={{
-              font: '24px',
-              marginTop: '43px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
           >
             <h3>Filter by</h3>
           </div>

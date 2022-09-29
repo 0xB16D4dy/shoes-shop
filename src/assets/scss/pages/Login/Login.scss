@@ -1,25 +1,24 @@
 section {
   .wrapper-login {
     .header-login {
-      font-weight: 400;
-      font-size: 40px;
+      @include text($fw-4, $fs-l, $text-color-primary);
       line-height: 48px;
       @media screen and (max-width: 768px) {
-        font-size: 30px;
+        font-size: $fs-mdl;
       }
     }
     .row {
-      margin-bottom: 43px;
+      margin-bottom: ($mg-3 + 4);
       .frm {
         .form-group {
-          margin-bottom: 10px;
+          margin-bottom: $mg-1;
           label {
             padding: 8px 0;
-            font-size: 16px;
+            font-size: $fs-sm;
           }
           .form-control {
             padding: 16px 12px 14px 14px;
-            background: rgba(33, 33, 33, 0.08);
+            background: $bg-color-3rd;
             border-radius: 4px 4px 4px 4px;
             -webkit-border-radius: 4px 4px 4px 4px;
             -moz-border-radius: 4px 4px 4px 4px;
@@ -27,28 +26,25 @@ section {
             -o-border-radius: 4px 4px 4px 4px;
           }
           span {
-            font-weight: 400;
-            font-size: 12px;
+            font-weight: $fw-4;
+            font-size: $fs-sn;
             line-height: 16px;
-            color: #f50e0e;
+            color: $text-color-7th;
             padding-bottom: 10px;
           }
 
           &.wrapper-login-fb {
             text-align: center;
             .login-facebook {
-              background: #1877f2;
-              font-weight: $fw-4;
+              background: $bg-color-4th;
+              @include text($fw-4, $fs-md);
               line-height: 1;
-              font-size: $fs-md;
               width: 100%;
-              margin-top: 35px;
-              margin-bottom: 10px;
+              margin-top: ($mg-3 + 5);
+              margin-bottom: $mg-1;
               box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14),
                 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
-              padding: 9px;
               border: none;
-              color: #fff;
               display: flex;
               justify-content: center;
               align-items: center;
@@ -58,13 +54,12 @@ section {
               -ms-border-radius: 50px;
               -o-border-radius: 50px;
               .fa-facebook {
-                font-size: 43px;
-                margin-right: 32px;
+                font-size: ($fs-l + 3);
+                margin-right: ($fs-mdl + 2);
               }
             }
             a.register-link {
-              font-weight: 500;
-              font-size: 18px;
+              @include text($fw-5, $fs-sm + 2, $color-15);
               line-height: 24px;
             }
             @media screen and (max-width: 768px) {
@@ -73,14 +68,14 @@ section {
               justify-content: center;
               align-items: center;
               button.login-facebook {
-                font-size: 12px;
+                font-size: $fs-sn;
                 .fa-facebook {
-                  font-size: 32px;
-                  margin-right: 11px;
+                  font-size: ($fs-mdl + 2);
+                  margin-right: ($mg-1 + 1);
                 }
               }
               a.register-link {
-                font-size: 16px;
+                font-size: $fs-sm;
               }
             }
           }
@@ -88,13 +83,11 @@ section {
         .btnLoginWrapper {
           text-align: center;
           button.btnLogin {
-            padding: 20px;
+            padding: $pd-2;
             width: 100%;
-            font-size: 20px;
-            font-weight: 500;
+            @include text($fw-5, $fs-md);
             line-height: 16px;
-            color: #fff;
-            background: #1877f2;
+            background: $bg-color-4th;
             box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14),
               0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
             border: none;
@@ -105,7 +98,7 @@ section {
             -o-border-radius: 50px;
             @media screen and (max-width: 768px) {
               width: 50%;
-              font-size: 16px;
+              font-size: $fs-sm;
             }
           }
         }
@@ -113,7 +106,7 @@ section {
           margin: 10px 0;
           text-align: right;
           .changePassword-link {
-            color: #8e8e8e;
+            color: $text-color-8th;
           }
         }
       }
