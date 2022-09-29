@@ -7,12 +7,18 @@
       .carousel-inner {
         .carousel-item {
           .d-flex {
+            
+          //   @media screen and (max-width:576px) {
+          //     display: inline;
+          // }
             .image {
               img {
-                // width: 100%
               }
             }
             .content {
+              @media screen and (max-width:576px) {
+                display: none;
+            }
               h1 {
                 @include text($fw-3, $fs-l, $color-3);
               }
@@ -36,7 +42,16 @@
         background-color: #F21299;
       }
       .row{
+        
         .col-4{
+          @media screen and (max-width:992px) {
+            width: calc(100% /2 );
+        }
+        @media screen and (max-width:576px) {
+            width: calc(100% /1 );
+        }
+
+          
           padding: 20px;
   
           .card{

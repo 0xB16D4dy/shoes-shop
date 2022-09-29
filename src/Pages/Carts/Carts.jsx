@@ -1,12 +1,11 @@
 import { Divider } from 'antd';
 import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import {
   deleteShoeToCartAction,
   orderCartApi,
+  tangGiamSoLuong
 } from '../../redux/reducers/shoesReducer';
 import {
   ACCESS_TOKEN,
@@ -22,8 +21,9 @@ export default function Carts() {
   const renderCarts = () => {
     // console.log(arrCarts);
     return arrShoeCarts?.map((item, index) => {
+        console.log(item)
       return (
-        <tr key={index}>
+        <tr key={index} >
           <td>
             <input type='checkbox' />
           </td>
@@ -34,11 +34,13 @@ export default function Carts() {
           <td>{item.name}</td>
           <td>{item.price}</td>
           <td className='item-quantity'>
-            <button className='btn-asc'>+</button>
-            <p>{item.quantity}</p>
-            <button className='btn-desc'>-</button>
+            <button className='btn-asc btn btn-primary mx-2'onClick={()=>
+              dispatch(tangGiamSoLuong([item.id,true]))}>+</button>
+                  <p>{item.soLuong}</p>
+            <button className='btn-desc btn btn-primary mx-2'onClick={()=>
+              dispatch(tangGiamSoLuong([item.id,false]))}>-</button>
           </td>
-          <td>{item.price * item.quantity}</td>
+          <td>{item.price * item.soLuong}</td>
           <td>
             <button
               className='btn-delete'

@@ -1,26 +1,92 @@
 @import '../../base/base';
 @import '../../themes/variable';
 
-.containe {
+.container {
   .carausel {
+    @media screen and (max-width:976px) {
+      display: block;
+    }
     .img-shoes {
       img {
       }
     }
     .title {
+      @media screen and (max-width:576px) {
+        display: none;
+      }
       h1 {
+        @include text($fw-3, $fs-mdl, $color-3);
       }
       p {
+        @include text($fw-4, $fs-sm, $color-4);
       }
       h3 {
+        @include text($fw-5, $fs-mds, $color-5);
       }
       span {
+        @include text($fw-6, $fs-mdl, $color-12);
       }
-      .info {
-        display: flex;
+      .d-flex {
         button {
+          @include text($fw-6, $fs-mdl, $color-1);
+          background-color: $color-13;
+          padding: 0px 12px;
+          margin-right: 15px;
+          border:none
         }
         p {
+          @include text($fw-4, $fs-mdl, $color-4);
+          margin-right: 15px;
+        }
+      }
+      button{
+        @include text($fw-5, $fs-mds, $color-1);
+        background-color: $color-14;
+        border:none;
+        margin-top: 10px;
+        padding: 10px;
+      }
+    }
+  }
+  .realate{
+    h3{
+      @include text($fw-4, $fs-l, $color-3);
+    }
+    .row{
+      .col-4{
+        padding: 20px;
+        @media screen and (max-width:992px) {
+          width: calc(100% /2 );
+      }
+      @media screen and (max-width:576px) {
+          width: calc(100% /1 );
+      }
+        .card{
+          background-color: #F8F8F8;
+          img{
+          }
+          .info{
+            h3{
+              @include text($fw-3, $fs-mds, $color-3);
+            }
+            p{
+              @include text($fw-3, $fs-md, $color-2);
+            }
+          }
+          .d-flex{
+            button{
+              @include text($fw-3, $fs-mds, $color-3);
+              background-color: #E1B067;
+              border: none;
+              padding: 5px 50px;
+      
+            }
+            p{
+              @include text($fw-6, $fs-mds, $color-3);
+              background-color: $color-10;
+              padding: 5px 50px;
+            }
+          }
         }
       }
     }

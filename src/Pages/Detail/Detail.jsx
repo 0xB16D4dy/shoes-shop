@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import {
   addShoeToCartAction,
   getshoesDetailApi,
+  tangGiamDetail,
 } from '../../redux/reducers/shoesReducer';
 import '../../assets/scss/pages/Detail/detail.scss';
-import { useRef } from 'react';
 
 export default function Detail() {
   const params = useParams();
@@ -15,10 +15,16 @@ export default function Detail() {
 
   useEffect(() => {
     let { id } = params;
-    
+
     const action = getshoesDetailApi(id);
     dispatch(action);
   }, [params.id]);
+  // console.log(shoesDetail.size)
+  // var arrOrder = [];
+  //   for (let i = 0; i < shoesDetail.size.length; i++) {
+  //       arrOrder+=shoesDetail.size[i]
+  //     }
+  //   console.log(arrOrder);
 
   return (
     <div className='container'>
@@ -35,9 +41,23 @@ export default function Detail() {
           </p>
           <span>{shoesDetail.price}</span>
           <div className='d-flex'>
-            <button>+</button>
-            <p>{shoesDetail.quantity}</p>
-            <button>-</button>
+            <p>
+              <button
+                className='btn btn-primary'
+                onClick={() => dispatch(tangGiamDetail([shoesDetail.id, true]))}
+              >
+                +
+              </button>
+              {shoesDetail.soLuong}
+              <button
+                className='btn btn-primary mx-3'
+                onClick={() =>
+                  dispatch(tangGiamDetail([shoesDetail.id, false]))
+                }
+              >
+                -
+              </button>
+            </p>
           </div>
           <button
             onClick={() => {
@@ -47,11 +67,62 @@ export default function Detail() {
             Add to card
           </button>
         </div>
-        `
       </div>
-      <div className='realate'>
-        <h3>realate product</h3>
+      <div className='realate mb-3'>
+        <h3 className='text-center'>-Realate product-</h3>
         <div className='row'>
+          <div className='col-4'>
+            <div className='card'>
+              <img src={shoesDetail.image} alt='...' className='w-100' />
+              <div className='info'>
+                <h3>{shoesDetail.name}</h3>
+                <p>{shoesDetail.shortDescription}</p>
+              </div>
+              <div className='d-flex justify-content-around align-items-center'>
+                <button>buy now</button>
+                <p>{shoesDetail.quantity}$</p>
+              </div>
+            </div>
+          </div>
+          <div className='col-4'>
+            <div className='card'>
+              <img src={shoesDetail.image} alt='...' className='w-100' />
+              <div className='info'>
+                <h3>{shoesDetail.name}</h3>
+                <p>{shoesDetail.shortDescription}</p>
+              </div>
+              <div className='d-flex justify-content-around align-items-center'>
+                <button>buy now</button>
+                <p>{shoesDetail.quantity}$</p>
+              </div>
+            </div>
+          </div>
+          <div className='col-4'>
+            <div className='card'>
+              <img src={shoesDetail.image} alt='...' className='w-100' />
+              <div className='info'>
+                <h3>{shoesDetail.name}</h3>
+                <p>{shoesDetail.shortDescription}</p>
+              </div>
+              <div className='d-flex justify-content-around align-items-center'>
+                <button>buy now</button>
+                <p>{shoesDetail.quantity}$</p>
+              </div>
+            </div>
+          </div>
+          <div className='col-4'>
+            <div className='card'>
+              <img src={shoesDetail.image} alt='...' className='w-100' />
+              <div className='info'>
+                <h3>{shoesDetail.name}</h3>
+                <p>{shoesDetail.shortDescription}</p>
+              </div>
+              <div className='d-flex justify-content-around align-items-center'>
+                <button>buy now</button>
+                <p>{shoesDetail.quantity}$</p>
+              </div>
+            </div>
+          </div>
           <div className='col-4'>
             <div className='card'>
               <img src={shoesDetail.image} alt='...' className='w-100' />

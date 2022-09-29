@@ -1,0 +1,8 @@
+.sidebar {
+  padding-right: 6px;
+}
+.sidebar .sidebarWrapper .sidebarMenu .sidebarList {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}

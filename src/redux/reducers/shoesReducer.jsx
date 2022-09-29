@@ -17,20 +17,72 @@ const productReducer = createSlice({
     },
     getshoesDetailAction: (state, action) => {
       const shoesDetail = action.payload;
-      state.shoesDetail = shoesDetail;
+    
+      let listCart={id: shoesDetail.id, 
+      name: shoesDetail.name,  
+      image: shoesDetail.image,
+      description: shoesDetail.description,
+      price:shoesDetail.price,
+      quantity:shoesDetail.quantity, 
+      size:shoesDetail.size,
+      soLuong:1}
+      state.shoesDetail = listCart;
+    },
+    tangGiamDetail:(state,action)=>{
+      const {id,tangGiam} = action.payload;
+      console.log(id,tangGiam)
+      // let arrDetail=[...state.shoesDetail];
+      // console.log('cart',arrDetail)
+      let index=state.shoesDetail.findIndex((item)=>item.id===id);
+      console.log(index)
+      if(tangGiam){
+        state.shoesDetail[index].soLuong +=1;
+      }
+      else{
+        // if(arrDetail[index].soLuong>1){
+          state.shoesDetail[index].soLuong -=1;
+        // }
+      }
+      // state.shoesDetail=arrDetail
     },
     addShoeToCartAction: (state, action) => {
       const shoe = action.payload;
-      let index = state.arrShoeCarts.findIndex((item) => item.id === shoe.id);
+      console.log(shoe)
+      let listCart={"id": shoe.id, 
+      name: shoe.name,  
+      image: shoe.image,
+      description: shoe.description,
+      price:shoe.price,
+      quantity:shoe.quantity, 
+      soLuong:1}
+      let index = state.arrShoeCarts.findIndex((item) => item.id === listCart.id);
+      console.log(index)
       if (index !== -1) {
         state.arrShoeCarts[index].quantity += 1;
       } else {
-        state.arrShoeCarts.push(shoe);
+        state.arrShoeCarts.push(listCart);
       }
+    },
+    tangGiamSoLuong:(state,action)=>{
+      const [id,tangGiam] = action.payload;
+      console.log('acb',id,tangGiam);
+      let cartUpdate=state.arrShoeCarts.findIndex(item=>item.id===id);
+     console.log('evs',cartUpdate)
+      if(tangGiam){
+        state.arrShoeCarts[cartUpdate].soLuong +=1;
+      }
+      else{
+          if(state.arrShoeCarts[cartUpdate].soLuong>1){     
+          state.arrShoeCarts[cartUpdate].soLuong -=1;        
+      }
+    }
+   
+      
     },
     deleteShoeToCartAction: (state, action) => {
       const id = action.payload;
       state.arrShoeCarts = state.arrShoeCarts.filter((item) => item.id !== id);
+      console.log(state.arrShoeCarts)
     },
     cleanCart: (state, action) => {
       state.arrShoeCarts = action.payload;
@@ -44,6 +96,8 @@ export const {
   addShoeToCartAction,
   deleteShoeToCartAction,
   cleanCart,
+  tangGiamSoLuong,
+  tangGiamDetail
 } = productReducer.actions;
 
 export default productReducer.reducer;
