@@ -17,12 +17,14 @@ const productReducer = createSlice({
     },
     getshoesDetailAction: (state, action) => {
       const shoesDetail = action.payload;
+    
       let listCart={id: shoesDetail.id, 
       name: shoesDetail.name,  
       image: shoesDetail.image,
       description: shoesDetail.description,
       price:shoesDetail.price,
       quantity:shoesDetail.quantity, 
+      size:shoesDetail.size,
       soLuong:1}
       state.shoesDetail = listCart;
     },

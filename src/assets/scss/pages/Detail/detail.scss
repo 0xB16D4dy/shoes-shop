@@ -3,6 +3,9 @@
 
 .container {
   .carausel {
+    // @media screen and(max-width:976px) {
+    //   display: block;
+    // }
     .img-shoes {
       img {
       }
@@ -44,12 +47,17 @@
   }
   .realate{
     h3{
-
+      @include text($fw-4, $fs-l, $color-3);
     }
     .row{
       .col-4{
         padding: 20px;
-
+      //   @media screen and(max-width:992px) {
+      //     width: calc(100% /2 );
+      // }
+      // @media screen and(max-width:576px) {
+      //     width: calc(100% /1 );
+      // }
         .card{
           background-color: #F8F8F8;
           img{

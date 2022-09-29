@@ -25,7 +25,7 @@ export default function Carts() {
     return arrShoeCarts?.map((item, index) => {
         console.log(item)
       return (
-        <tr key={index}>
+        <tr key={index} >
           <td>
             <input type='checkbox' />
           </td>
@@ -35,13 +35,13 @@ export default function Carts() {
           </td>
           <td>{item.name}</td>
           <td>{item.price}</td>
-          <td>
-          <button className='btn btn-primary'onClick={()=>
-            dispatch(tangGiamSoLuong([item.id,true]))}>+</button>
-            {item.soLuong}
-            <button className='btn btn-primary'onClick={()=>
-            dispatch(tangGiamSoLuong([item.id,false]))}>-</button>
-            </td>
+          <td >
+            <button className='btn btn-primary mx-2'onClick={()=>
+              dispatch(tangGiamSoLuong([item.id,true]))}>+</button>
+                  {item.soLuong}
+            <button className='btn btn-primary mx-2'onClick={()=>
+              dispatch(tangGiamSoLuong([item.id,false]))}>-</button>
+          </td>
           <td>{item.price * item.soLuong}</td>
           <td>
             <button className='btn-edit'>edit</button>
