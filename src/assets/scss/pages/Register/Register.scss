@@ -2,7 +2,10 @@
 @import '../../themes/variable';
 
 .container{
-    .form-group{
+    @media screen and (max-width:576px) {
+        display: block;
+    }
+    .form-group {
         p{
             @include text($fw-5, $fs-mds, $text-color-2nd);
         }

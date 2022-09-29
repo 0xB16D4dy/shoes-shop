@@ -14,6 +14,11 @@
   margin: 0 auto;
 }
 
+@media screen and (max-width: 576px) {
+  .home .carousel .container .carousel-inner .carousel-item .d-flex .content {
+    display: none;
+  }
+}
 .home .carousel .container .carousel-inner .carousel-item .d-flex .content h1 {
   font-weight: 300;
   font-size: 40px;
@@ -40,6 +45,16 @@
 }
 .home .feature .container .row .col-4 {
   padding: 20px;
+}
+@media screen and (max-width: 992px) {
+  .home .feature .container .row .col-4 {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .home .feature .container .row .col-4 {
+    width: 100%;
+  }
 }
 .home .feature .container .row .col-4 .card {
   background-color: #F8F8F8;

@@ -3,14 +3,17 @@
 
 .container {
   .carausel {
-    // @media screen and(max-width:976px) {
-    //   display: block;
-    // }
+    @media screen and (max-width:976px) {
+      display: block;
+    }
     .img-shoes {
       img {
       }
     }
     .title {
+      @media screen and (max-width:576px) {
+        display: none;
+      }
       h1 {
         @include text($fw-3, $fs-mdl, $color-3);
       }
@@ -52,12 +55,12 @@
     .row{
       .col-4{
         padding: 20px;
-      //   @media screen and(max-width:992px) {
-      //     width: calc(100% /2 );
-      // }
-      // @media screen and(max-width:576px) {
-      //     width: calc(100% /1 );
-      // }
+        @media screen and (max-width:992px) {
+          width: calc(100% /2 );
+      }
+      @media screen and (max-width:576px) {
+          width: calc(100% /1 );
+      }
         .card{
           background-color: #F8F8F8;
           img{
