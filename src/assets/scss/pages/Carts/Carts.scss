@@ -1,5 +1,5 @@
 .carts {
-  h3 {
+  .title-header {
     margin-top: 50px;
   }
   table.table {
@@ -37,6 +37,17 @@
               -moz-border-radius: 3px;
               -ms-border-radius: 3px;
               -o-border-radius: 3px;
+            }
+            p{
+              display: inline-block;
+            }
+            @media screen and (max-width: 768px) {
+              .btn-asc, .btn-desc{
+                margin: 0px;
+              }
+              p{
+                display: block;
+              }
             }
           }
           vertical-align: middle;

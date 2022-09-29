@@ -7,7 +7,7 @@ import {
   getUnLikeApi,
 } from '../../redux/reducers/userReducer';
 import { Form, Input, Button, Radio, Tabs, Pagination, Divider } from 'antd';
-import { DislikeOutlined, LikeOutlined } from '@ant-design/icons';
+import { DislikeOutlined } from '@ant-design/icons';
 import { ACCESS_TOKEN, getStore } from '../../utils/tools';
 import { Navigate } from 'react-router-dom';
 
@@ -29,43 +29,45 @@ export default function Profile() {
           <div className='date-generate'>
             + Orders have been placed on 09-19-2022
           </div>
-          <table className='table'>
-            <thead>
-              <tr className='thead-background'>
-                <th>id</th>
-                <th>img</th>
-                <th>name</th>
-                <th>price</th>
-                <th>quantity</th>
-                <th>total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {arrOrder?.orderDetail?.map((prod, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{index}</td>
-                    <td>
-                      <img src={prod.image} alt='' width={86} height={56} />
-                    </td>
-                    <td>{prod.name}</td>
-                    <td>{prod.price}</td>
-                    <td>
-                      <span
-                        style={{
-                          padding: '2px 36px',
-                          backgroundColor: '#D9D9D9',
-                        }}
-                      >
-                        {prod.quantity}
-                      </span>
-                    </td>
-                    <td>{prod.quantity * prod.price}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <div className='wrapper-order table-responsive'>
+            <table className='table align-middle'>
+              <thead>
+                <tr className='thead-background'>
+                  <th className='text-center'>id</th>
+                  <th className='text-center'>img</th>
+                  <th className='text-center'>name</th>
+                  <th>price</th>
+                  <th>quantity</th>
+                  <th>total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {arrOrder?.orderDetail?.map((prod, index) => {
+                  return (
+                    <tr key={index}>
+                      <td className='text-center'>{index + 1}</td>
+                      <td className='text-center'>
+                        <img src={prod.image} alt='' width={86} height={56} />
+                      </td>
+                      <td className='text-center'>{prod.name}</td>
+                      <td>{prod.price}</td>
+                      <td>
+                        <span
+                          style={{
+                            padding: '2px 36px',
+                            backgroundColor: '#D9D9D9',
+                          }}
+                        >
+                          {prod.quantity}
+                        </span>
+                      </td>
+                      <td>{prod.quantity * prod.price}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       );
     });
@@ -74,11 +76,11 @@ export default function Profile() {
   const renderFavorite = () => {
     return productFavoriteList.map((prod, index) => {
       return (
-        <div key={index}>
-          <div className='wrapper-favorite'>
-            <table className='table'>
+        <div key={index} className='mb-4'>
+          <div className='wrapper-favorite table-responsive'>
+            <table className='table align-middle text-center'>
               <thead>
-                <tr className='text-center'>
+                <tr style={{ background: '#d9d9d9' }}>
                   <th>id</th>
                   <th>image</th>
                   <th>name</th>
@@ -86,7 +88,7 @@ export default function Profile() {
                 </tr>
               </thead>
               <tbody>
-                <tr className='text-center' style={{ lineHeight: '8' }}>
+                <tr>
                   <td>{prod.id}</td>
                   <td>
                     <img src={prod.image} alt='' width={100} height={100} />
@@ -124,32 +126,42 @@ export default function Profile() {
     alert('Đăng nhập để vào trang này!');
     return <Navigate to='/login' />;
   }
+  const layout = {
+    labelCol: {
+      md: {
+        span: 4,
+      },
+      lg: {
+        span: 4,
+      },
+    },
+    wrapperCol: {
+      md: {
+        span: 18,
+      },
+      lg: {
+        span: 18,
+      },
+    },
+  };
 
   return (
     <div>
-      <div className='title-profile d-inline-block'>profile</div>
       <div className='container'>
-        <div className='wrapper-profile d-flex align-items-center'>
+        <h3 className='title-profile'>Profile</h3>
+        <Divider />
+        <div className='wrapper-profile'>
           <div className='nav-avatar'>
-            <img
-              src={userLogin?.avatar}
-              alt={userLogin?.name}
-              className='w-100'
-            />
+            <img src={userLogin?.avatar} alt={userLogin?.name} />
           </div>
           <div className='wrapper-form'>
             <Form
-              labelCol={{
-                span: 4,
-              }}
-              wrapperCol={{
-                span: 18,
-              }}
               layout='horizontal'
               onFinish={onFinish}
               size='large'
               className='frm-update'
               initialValues={userLogin}
+              {...layout}
             >
               <Form.Item label='Email' name='email'>
                 <Input disabled />
@@ -201,7 +213,7 @@ export default function Profile() {
               >
                 <Input.Password />
               </Form.Item>
-              <Form.Item wrapperCol={{ offset: 4, span: 18 }}>
+              <Form.Item wrapperCol={{ offset: 4, span: 10 }} className='wrapper-btn-update'>
                 <Button htmlType='submit' type='primary'>
                   Update
                 </Button>
@@ -211,7 +223,7 @@ export default function Profile() {
         </div>
         <hr />
         <div className='wrapper-detail'>
-          <div className='header-detail'>
+          <div className='antd-tab-detail'>
             <Tabs defaultActiveKey='1'>
               <Tabs.TabPane tab='Order History' key='1'>
                 <div className='body-detail'>{renderOrderHistory()}</div>

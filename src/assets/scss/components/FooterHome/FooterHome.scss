@@ -1,7 +1,7 @@
 footer {
   .row {
     margin-bottom: 26px;
-    .col-4 {
+    .wrapper-content-footer {
       padding: 0px 100px;
       text-align: left;
       h3.header-footer {
@@ -9,6 +9,10 @@ footer {
         font-size: 20px;
         line-height: 24px;
         padding-bottom: 10px;
+        @media screen and (max-width: 768px) {
+          font-size: 16px;
+          color: red;
+        }
       }
       .content-footer {
         p {
@@ -17,6 +21,9 @@ footer {
           line-height: 19px;
           padding-bottom: 12px;
           cursor: pointer;
+          @media screen and (max-width: 768px) {
+            font-size: 14px;
+          }
         }
       }
       &.line-left {
@@ -35,6 +42,17 @@ footer {
       line-height: 24px;
       text-align: center;
       color: #000;
+      @media screen and (max-width: 768px) {
+        font-size: 12px;
+      }
     }
   }
 }
+// /* Small devices (tablets, 768px and up) */
+// @media (min-width: @screen-sm-min) { ... }
+
+// /* Medium devices (desktops, 992px and up) */
+// @media (min-width: @screen-md-min) { ... }
+
+// /* Large devices (large desktops, 1200px and up) */
+// @media (min-width: @screen-lg-min) { ... }

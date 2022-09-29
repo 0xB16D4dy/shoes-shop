@@ -1,13 +1,32 @@
 import { MenuOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
+import { useEffect } from 'react';
 
 function SideBar({ arrCat, onSearchByCat }) {
+  const [size, setSize] = useState(0);
+  const [collapsed, setCollapsed] = useState(false);
   const renderItem = () => {
     return arrCat.map((cat) => {
       return { label: cat.id, key: cat.id };
     });
   };
+  const onResize = () => {
+    setSize(window.innerWidth);
+  };
+  const checkcollapsed = () => {
+    if (size < 768) {
+      setCollapsed(true);
+    }else{
+      setCollapsed(false)
+    }
+  };
+  useEffect(() => {
+    // window.addEventListener('resize', onResize);
+    onResize();
+    checkcollapsed()
+    // return () => window.removeEventListener('resize', onResize);
+  }, [size]);
   return (
     <div className='sidebar'>
       <div className='sidebarWrapper'>
@@ -27,6 +46,7 @@ function SideBar({ arrCat, onSearchByCat }) {
           <div className='sidebarList'>
             <Menu
               defaultOpenKeys={['sub1']}
+              inlineCollapsed={collapsed}
               mode='inline'
               theme='light'
               onClick={(info) => {

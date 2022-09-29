@@ -6,7 +6,7 @@ export default function FooterHome() {
     <footer>
       <div className='container'>
         <div className='row'>
-          <div className='col-4'>
+          <div className='wrapper-content-footer col-md-4 col-sm-6'>
             <h3 className='header-footer'>GET HELP</h3>
             <div className='content-footer'>
               <p>Home</p>
@@ -15,7 +15,7 @@ export default function FooterHome() {
               <p>Contact</p>
             </div>
           </div>
-          <div className='col-4 line-left'>
+          <div className='wrapper-content-footer col-md-4 col-sm-6 line-left'>
             <h3 className='header-footer'>SUPPORT</h3>
             <div className='content-footer'>
               <p>About</p>
@@ -24,7 +24,7 @@ export default function FooterHome() {
               <p>Phone</p>
             </div>
           </div>
-          <div className='col-4 line-left'>
+          <div className='wrapper-content-footer col-md-4 line-left'>
             <h3 className='header-footer'>REGISTER</h3>
             <div className='content-footer'>
               <p>Register</p>

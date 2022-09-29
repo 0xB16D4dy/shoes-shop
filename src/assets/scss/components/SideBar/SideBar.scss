@@ -4,12 +4,15 @@
     .sidebarMenu {
       .sidebarTitle {
         h3 {
+          @media screen and (max-width: 768px) {
+            font-size: 20px;
+          }
+          @media screen and (max-width: 576px) {
+            font-size: 16px;
+          }
         }
       }
       .sidebarList {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
         .sidebarListTitle {
         }
         .sideBarListItem {

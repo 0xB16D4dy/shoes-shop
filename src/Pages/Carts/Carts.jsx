@@ -35,7 +35,7 @@ export default function Carts() {
           <td>{item.price}</td>
           <td className='item-quantity'>
             <button className='btn-asc'>+</button>
-            {item.quantity}
+            <p>{item.quantity}</p>
             <button className='btn-desc'>-</button>
           </td>
           <td>{item.price * item.quantity}</td>
@@ -55,7 +55,7 @@ export default function Carts() {
   };
   return (
     <div className='carts container'>
-      <h3>CARTS</h3>
+      <h3 className='title-header'>CARTS</h3>
       <Divider />
       <table className='table text-center'>
         <thead className='table-header'>

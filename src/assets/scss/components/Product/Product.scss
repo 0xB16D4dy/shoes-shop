@@ -21,16 +21,22 @@
       margin-bottom: 20px;
       height: 24px;
       display: inline-block;
+      @media screen and (max-width: 768px) {
+        font-size: 14px;
+      }
     }
     .card-body-content {
       display: flex;
       justify-content: space-between;
-      &.content-price{
+      &.content-price {
         font-size: 18px;
+        @media screen and (max-width: 768px) {
+          font-size: $fs-sm;
+        }
       }
       p {
-        font-size: $fs-md;
         .fa-heart {
+          font-size: $fs-md;
           color: red;
         }
       }
@@ -47,6 +53,10 @@
         font-size: 16px;
         border: none;
         border-color: #1890ff;
+        @media screen and (max-width: 768px) {
+          font-size: 14px;
+          margin-top: 0px;
+        }
       }
     }
   }

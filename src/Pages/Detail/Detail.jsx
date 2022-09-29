@@ -36,7 +36,7 @@ export default function Detail() {
           <span>{shoesDetail.price}</span>
           <div className='d-flex'>
             <button>+</button>
-            <p>1</p>
+            <p>{shoesDetail.quantity}</p>
             <button>-</button>
           </div>
           <button

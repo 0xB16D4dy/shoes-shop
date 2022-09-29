@@ -63,7 +63,7 @@ export default function SearchPage() {
   // const filteredList = useMemo(handleCheck,[productList,selectCategory])
   return (
     <div className='searchPage container' style={{ marginBottom: '105px' }}>
-      <h1 className='title-searchPage'>Search</h1>
+      <h3 className='title-searchPage'>Search</h3>
       <div className='row'>
         <div className='col-left'>
           <SideBar arrCat={arrCat} onSearchByCat={handleSearchByCat} />
@@ -101,7 +101,7 @@ export default function SearchPage() {
                   <div className='row'>
                     {arrProduct.map((product, index) => {
                       return (
-                        <div className='col-4 p-4' key={index}>
+                        <div className='col-md-4 col-sm-6 p-4' key={index}>
                           <Product product={product} />
                         </div>
                       );

@@ -33,7 +33,7 @@ export default function Login() {
         <h3 className='header-login'>Login</h3>
         <hr />
         <div className='row'>
-          <form className='frm col-5 mx-auto' onSubmit={frm.handleSubmit}>
+          <form className='frm col-lg-5 col-sm-8 mx-auto' onSubmit={frm.handleSubmit}>
             <div className='form-group'>
               <label>Email</label>
               <input
@@ -79,8 +79,7 @@ export default function Login() {
                 Login
               </button>
             </div>
-            <div></div>
-            <div className='form-group text-center'>
+            <div className='form-group wrapper-login-fb'>
               <LoginFaceBook />
               <NavLink className='register-link' to='/register'>
                 Register now ?

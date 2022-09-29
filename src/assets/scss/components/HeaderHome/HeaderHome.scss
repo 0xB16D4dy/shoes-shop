@@ -1,11 +1,12 @@
 header.wrapper {
   .navbar {
     .collapse {
-      .frm-search {
-        position: relative;
-      }
       .navbar-nav {
+        @media screen and (max-width: 768px) {
+          text-align: center;
+        }
         .nav-item {
+          font-size: 14px;
           .cart-product {
             .fa-cart-shopping {
               font-size: 20px;
@@ -13,15 +14,9 @@ header.wrapper {
               margin-right: 4px;
             }
           }
-          .nav-search {
-            font-weight: 300;
-            font-size: 27px;
-            line-height: 0.8;
-            color: #fff;
-            .icon-search {
-              font-size: 26px;
-              padding-right: 5px;
-            }
+          .icon-search {
+            font-size: 20px;
+            transform: translate(-2px, 1px);
           }
         }
       }

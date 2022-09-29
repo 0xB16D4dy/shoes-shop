@@ -60,22 +60,22 @@ export default function HeaderHome() {
             <img src='./img/iconBrand.png' alt='iconBrand' />
           </NavLink>
           <button
-            className='navbar-toggler d-lg-none'
+            className='navbar-toggler'
             type='button'
             data-bs-toggle='collapse'
-            data-bs-target='#collapsibleNavId'
-            aria-controls='collapsibleNavId'
+            data-bs-target='#navbarNav'
+            aria-controls='navbarNav'
             aria-expanded='false'
             aria-label='Toggle navigation'
-          />
-          <div className='collapse navbar-collapse' id='collapsibleNavId'>
+          >
+            <span className='navbar-toggler-icon'></span>
+          </button>
+          <div className='collapse navbar-collapse' id='navbarNav'>
             <ul className='navbar-nav mt-2 mt-lg-0 ms-auto'>
-              <li className='nav-item active'>
+            <li className='nav-item active'>
                 <NavLink className='nav-link' to='/search'>
-                  <div className='nav-search'>
-                    <i className='icon-search fa fa-search text-light'></i>
-                    Search
-                  </div>
+                  <i className='icon-search fa fa-search text-light'></i>
+                  Search
                 </NavLink>
               </li>
               <li className='nav-item active'>
