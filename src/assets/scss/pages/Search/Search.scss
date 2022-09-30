@@ -1,0 +1,52 @@
+.container.searchPage {
+  h3.title-searchPage {
+    text-align: center;
+    font-size: $fs-l;
+    @media screen and (max-width: 768px) {
+      font-size: $fs-mdl;
+    }
+  }
+  .row {
+    .col-left {
+      width: calc(100% - 80%);
+    }
+    .col-right {
+      width: calc(100% - 20%);
+      .frm-search {
+        .search-input {
+        }
+      }
+      .result {
+        .wrapperResult {
+          .title-wrapperResult {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: $pd-2;
+            p {
+            }
+            .result-sortBy {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              p {
+              }
+              .select-option {
+                margin-left: $mg-2;
+                option {
+                }
+              }
+            }
+          }
+          .resultList {
+            .resultListItem {
+              .row {
+                margin: 0 24px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

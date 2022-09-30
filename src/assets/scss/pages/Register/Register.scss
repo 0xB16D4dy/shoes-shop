@@ -1,0 +1,19 @@
+@import '../../base/base';
+@import '../../themes/variable';
+
+.container{
+    @media screen and (max-width:576px) {
+        display: block;
+    }
+    .form-group {
+        p{
+            @include text($fw-5, $fs-mds, $text-color-2nd);
+        }
+        button{
+            background-color: #6200EE;
+            @include text($fw-5, $fs-ss, $color-1);
+            border-radius: 20px;
+            padding: 10px 20px;
+        }
+    }
+}

@@ -3,10 +3,7 @@ import { http } from '../../utils/tools';
 import axios from 'axios'
 
 const initialState = {
-    Register:[
-        {email:'',phone:'',passowrd:'',name:'',gender:true}
-    ]
-
+    
 }
 
 const registerReducer = createSlice({
@@ -24,22 +21,16 @@ export const {getRegisterAction} = registerReducer.actions
 
 export default registerReducer.reducer
 
-export const registerApi=(Register)=>{
-    return async(dipatch)=>{
-        var mess = '';
-        try {
-            let result = await axios ({
-                url: 'https://shop.cyberlearn.vn/api/Users/signup',
-                method: 'POST',
-                data: Register,
-        
-            });
-            mess = result.data
-            console.log(mess.content)
-            alert (mess.message);
+export const registerApi=(values)=>{
+    return async(dispatch)=>{
+        try{
+            const result = await http.post('Users/signup', values);
+            console.log(result.data.content);
+            alert('dang ki thanh cong')
         }
-        catch (err){
+        catch(err){
             console.log(err)
+            alert('email da ton tai vui long dang ki lai')
         }
 }
 }

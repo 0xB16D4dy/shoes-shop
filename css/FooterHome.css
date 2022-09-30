@@ -1,0 +1,36 @@
+footer .row {
+  margin-bottom: 26px;
+}
+footer .row .col-4 {
+  padding: 0px 100px;
+  text-align: left;
+}
+footer .row .col-4 h3.header-footer {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  padding-bottom: 10px;
+}
+footer .row .col-4 .content-footer p {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  padding-bottom: 12px;
+  cursor: pointer;
+}
+footer .row .col-4.line-left {
+  border-left: 1px solid #dedddc;
+}
+footer .copy-right {
+  background: #d9d9d9;
+  height: 74px;
+  display: flex;
+  align-items: center;
+}
+footer .copy-right p {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #000;
+}
