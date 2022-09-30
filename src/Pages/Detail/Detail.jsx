@@ -13,6 +13,11 @@ export default function Detail() {
   const params = useParams();
   const { shoesDetail } = useSelector((state) => state.shoesReducer);
   const dispatch = useDispatch();
+  const renderSizeShoe = () => {
+    return shoesDetail.size?.map((sizeNumber,index) => {
+      return <button className='btn btn-primary mx-2' key={index}>{sizeNumber}</button>
+    })
+  }
 
   useEffect(() => {
     let { id } = params;
@@ -38,10 +43,10 @@ export default function Detail() {
           <h1>{shoesDetail.name}</h1>
           <p>{shoesDetail.description}</p>
           <h3>Avaible sizze</h3>
-          <p id='BtnSizeGiay'>
-            <button className='btn btn-success'>{shoesDetail.size}</button>
-          </p>
-          <span>{shoesDetail.price}</span>
+          <div className="button-size">
+              {renderSizeShoe()}
+          </div>
+          <span>{shoesDetail.price}$</span>
           <div className='d-flex'>       
             <p><button className='btn btn-primary'onClick={()=>
               dispatch(tangGiamDetail([shoesDetail.id,true]))}>+</button>
