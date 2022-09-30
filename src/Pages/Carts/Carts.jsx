@@ -48,7 +48,7 @@ export default function Carts() {
                 dispatch(deleteShoeToCartAction(item.id));
               }}
             >
-              delete
+              Delete
             </button>
           </td>
         </tr>

@@ -76,8 +76,6 @@ const productReducer = createSlice({
           state.arrShoeCarts[cartUpdate].soLuong -=1;        
       }
     }
-   
-      
     },
     deleteShoeToCartAction: (state, action) => {
       const id = action.payload;
